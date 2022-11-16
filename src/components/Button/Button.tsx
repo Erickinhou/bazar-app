@@ -1,12 +1,16 @@
-import { Pressable, Text, View } from "react-native";
+import { Pressable, PressableProps, Text, View } from "react-native";
 import { styles } from "./styles";
 
-interface ButtonI {
-  type: "primary" | "secondary";
+interface Props extends PressableProps {
+  type?: "primary" | "secondary";
   text: string;
 }
 
-export const Button: React.FC<ButtonI> = ({ type = "primary", text }) => {
+export const Button: React.FC<Props> = ({
+  type = "primary",
+  text,
+  ...props
+}) => {
   const getPressableStyles = () => {
     return { ...styles.pressable, ...styles[`${type}`] };
   };
@@ -15,7 +19,7 @@ export const Button: React.FC<ButtonI> = ({ type = "primary", text }) => {
   };
   return (
     <View style={styles.container}>
-      <Pressable style={getPressableStyles()}>
+      <Pressable style={getPressableStyles()} {...props}>
         <Text style={getTextStyles()}>{text}</Text>
       </Pressable>
     </View>

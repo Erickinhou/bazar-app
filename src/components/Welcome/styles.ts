@@ -4,22 +4,17 @@ import { colorPalette } from "../../theme/colors";
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: "row",
-  },
-  pressable: {
-    flex: 0.6,
-    marginHorizontal: "auto",
-    padding: 10,
-    borderRadius: 20,
-  },
-  primary: {
-    color: colorPalette.backgroundWhite,
+    alignContent: "center",
     backgroundColor: colorPalette.primary,
   },
   text: {
+    fontSize: 42,
     textAlign: "center",
-  },
-  primaryText: {
     color: colorPalette.backgroundWhite,
+  },
+  image: {
+    width: 100,
+    height: 100,
+    alignSelf: "center",
   },
 });
