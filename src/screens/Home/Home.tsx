@@ -9,7 +9,7 @@ import { RootStackParamList } from "../../navigation";
 
 type Props = NativeStackScreenProps<RootStackParamList, "Home">;
 
-export const Home = ({ navigation }: Props) => {
+export const Home: React.FC<Props> = ({ navigation }: Props) => {
   const handlePress = () => {
     navigation.navigate("Login");
   };

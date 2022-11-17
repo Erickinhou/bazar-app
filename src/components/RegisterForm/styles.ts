@@ -25,6 +25,6 @@ export const styles = StyleSheet.create({
     marginTop: 20,
   },
   createAccount: {
-    padding: 10,
+    marginTop: 10,
   },
 });

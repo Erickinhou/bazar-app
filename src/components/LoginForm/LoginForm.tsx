@@ -10,28 +10,23 @@ import lockIcon from "../../../assets/images/lockIcon.png";
 import { TextLink } from "../TextLink";
 import { Button } from "../Button";
 import { api } from "../../service";
+import { Input } from "../Input";
+import { validateEmail } from "../../validation";
 
+interface Props {
+  navigateToRegister: () => void;
+}
 interface FormI {
   password: string;
   email: string;
 }
-interface HandleInput {
-  type: keyof FormI;
-  value: string;
-}
 
-export const LoginForm: React.FC = () => {
+export const LoginForm: React.FC<Props> = ({ navigateToRegister }) => {
   const [form, setForm] = useState<FormI>({ password: "", email: "" });
-  const [loading, setLoading] = useState(false);
-
-  const handleInput = ({ type, value }: HandleInput) => {
-    setForm((prev) => {
-      return { ...prev, [type]: value };
-    });
-  };
+  const [disabled, setDisabled] = useState(false);
 
   const handleLogin = async () => {
-    setLoading(true);
+    setDisabled(true);
     try {
       form.email = form.email.toLocaleLowerCase().trim();
       const { data } = await api.post("/signIn", form);
@@ -43,7 +38,7 @@ export const LoginForm: React.FC = () => {
         text2: err?.response.data.message ?? "Email ou senha invalidos",
       });
     }
-    setLoading(false);
+    setDisabled(false);
   };
 
   return (
@@ -51,21 +46,25 @@ export const LoginForm: React.FC = () => {
       <Text style={styles.title}>Login</Text>
       <View style={styles.containerInput}>
         <Label icon={messageIcon}>Email</Label>
-        <TextInput
-          style={styles.textInput}
+        <Input
           placeholder="E-mail"
+          type="email"
           value={form.email}
-          onChangeText={(value) => handleInput({ value, type: "email" })}
+          setForm={setForm}
+          setDisabled={setDisabled}
+          validation={validateEmail}
         />
       </View>
       <View style={styles.containerInput}>
         <Label icon={lockIcon}>Senha</Label>
-        <TextInput
+        <Input
           style={styles.textInput}
           placeholder="Senha"
+          type="password"
           secureTextEntry={true}
           value={form.password}
-          onChangeText={(value) => handleInput({ value, type: "password" })}
+          setForm={setForm}
+          setDisabled={setDisabled}
         />
       </View>
       <TextLink text="Esqueceu a Senha?" />
@@ -73,13 +72,14 @@ export const LoginForm: React.FC = () => {
         <Button
           type="primary"
           text="Entar"
-          onPressIn={handleLogin}
-          disabled={loading}
+          onPress={handleLogin}
+          disabled={disabled}
         />
         <TextLink
           style={styles.createAccount}
           textAlign="center"
           text="Criar Conta"
+          onPress={navigateToRegister}
         />
       </View>
     </SafeAreaView>
