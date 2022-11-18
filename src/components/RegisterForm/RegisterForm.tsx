@@ -10,7 +10,6 @@ import lockIcon from "../../../assets/images/lockIcon.png";
 import accountIcon from "../../../assets/images/accountIcon.png";
 import phoneIcon from "../../../assets/images/phoneIcon.png";
 import clipboardIcon from "../../../assets/images/clipboardIcon.png";
-import { TextLink } from "../TextLink";
 import { Button } from "../Button";
 import { api } from "../../service";
 import { Input } from "../Input";
@@ -20,6 +19,8 @@ import {
   validatePhoneNumber,
 } from "../../validation";
 import { objMap } from "../../utils";
+import { useNavigation } from "@react-navigation/native";
+import { NavigationProps } from "../../navigation/types";
 
 interface FormI {
   name: string;
@@ -39,14 +40,22 @@ export const RegisterForm: React.FC = () => {
   });
   const [disabled, setDisabled] = useState(false);
 
+  const navigation = useNavigation<NavigationProps>();
+
   const handleSubmit = async () => {
     setDisabled(true);
     try {
       const formattedForm = objMap(form, (value) => value.trim());
       setForm(formattedForm);
       const { data } = await api.post("/signUp", formattedForm);
-      console.log("Go to Dash", data);
+      navigation.navigate("Dashboard");
+      Toast.show({
+        type: "success",
+        text1: "Registro concluido",
+        text2: "Dados de usuário cadastrados com sucesso",
+      });
     } catch (err) {
+      console.log("err", err);
       Toast.show({
         type: "error",
         text1: "Falhou",

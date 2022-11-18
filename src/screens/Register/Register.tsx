@@ -1,13 +1,11 @@
-import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { View } from "react-native";
 import { RegisterForm } from "../../components/RegisterForm";
-import { Welcome } from "../../components/Welcome";
-import { RootStackParamList } from "../../navigation";
+import { ScreenType } from "../../navigation/types";
 import { styles } from "./styles";
 
-type Props = NativeStackScreenProps<RootStackParamList, "Register">;
+type Props = ScreenType<"Home">;
 
-export const Register = () => {
+export const Register: React.FC<Props> = () => {
   return (
     <View style={styles.container}>
       <RegisterForm />

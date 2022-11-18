@@ -12,7 +12,11 @@ export const Button: React.FC<Props> = ({
   ...props
 }) => {
   const getPressableStyles = () => {
-    return { ...styles.pressable, ...styles[`${type}`] };
+    const buttonCustomStyles = props.disabled
+      ? { ...styles[`${type}`], opacity: 0.5 }
+      : styles[`${type}`];
+
+    return { ...styles.pressable, ...buttonCustomStyles };
   };
   const getTextStyles = () => {
     return { ...styles.text, ...styles[`${type}Text`] };

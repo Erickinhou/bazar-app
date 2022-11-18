@@ -1,21 +1,17 @@
-import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { View } from "react-native";
 import { LoginForm } from "../../components/LoginForm";
 import { Welcome } from "../../components/Welcome";
-import { RootStackParamList } from "../../navigation";
+import { ScreenType } from "../../navigation/types";
 import { styles } from "./styles";
 
-type Props = NativeStackScreenProps<RootStackParamList, "Login">;
+type Props = ScreenType<"Login">;
 
-export const Login: React.FC<Props> = ({ navigation }) => {
-  const navigateToRegister = () => {
-    navigation.push("Register");
-  };
+export const Login: React.FC<Props> = () => {
   return (
     <View style={styles.container}>
       <Welcome />
       <View style={styles.formContainer}>
-        <LoginForm navigateToRegister={navigateToRegister} />
+        <LoginForm />
       </View>
     </View>
   );

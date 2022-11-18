@@ -12,25 +12,35 @@ import { Button } from "../Button";
 import { api } from "../../service";
 import { Input } from "../Input";
 import { validateEmail } from "../../validation";
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { RootStackParamList } from "../../navigation/types";
 
-interface Props {
-  navigateToRegister: () => void;
-}
 interface FormI {
   password: string;
   email: string;
 }
 
-export const LoginForm: React.FC<Props> = ({ navigateToRegister }) => {
+export const LoginForm: React.FC = () => {
   const [form, setForm] = useState<FormI>({ password: "", email: "" });
   const [disabled, setDisabled] = useState(false);
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+
+  const navigateToRegister = () => {
+    navigation.navigate("Register");
+  };
+
+  const navigateToDashboard = () => {
+    navigation.navigate("Dashboard");
+  };
 
   const handleLogin = async () => {
     setDisabled(true);
     try {
       form.email = form.email.toLocaleLowerCase().trim();
       const { data } = await api.post("/signIn", form);
-      console.log("Go to Dash", data);
+      navigateToDashboard();
     } catch (err) {
       Toast.show({
         type: "error",
@@ -72,14 +82,14 @@ export const LoginForm: React.FC<Props> = ({ navigateToRegister }) => {
         <Button
           type="primary"
           text="Entar"
-          onPress={handleLogin}
+          onPressIn={handleLogin}
           disabled={disabled}
         />
         <TextLink
           style={styles.createAccount}
           textAlign="center"
           text="Criar Conta"
-          onPress={navigateToRegister}
+          onPressIn={navigateToRegister}
         />
       </View>
     </SafeAreaView>

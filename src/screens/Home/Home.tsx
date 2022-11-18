@@ -4,10 +4,9 @@ import topSpot from "../../../assets/images/topSpot.png";
 import bazarGf from "../../../assets/images/bazarGf.png";
 import girlSmiling from "../../../assets/images/girlSmiling.png";
 import { Button } from "../../components/Button";
-import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { RootStackParamList } from "../../navigation";
+import { ScreenType } from "../../navigation/types";
 
-type Props = NativeStackScreenProps<RootStackParamList, "Home">;
+type Props = ScreenType<"Home">;
 
 export const Home: React.FC<Props> = ({ navigation }: Props) => {
   const handlePress = () => {
