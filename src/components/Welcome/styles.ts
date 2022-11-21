@@ -8,7 +8,6 @@ export const styles = StyleSheet.create({
     backgroundColor: colorPalette.primary,
   },
   text: {
-    fontSize: 42,
     textAlign: "center",
     color: colorPalette.backgroundWhite,
   },
