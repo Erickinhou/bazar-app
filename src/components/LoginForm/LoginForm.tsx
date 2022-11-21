@@ -40,15 +40,18 @@ export const LoginForm: React.FC = () => {
     try {
       form.email = form.email.toLocaleLowerCase().trim();
       const { data } = await api.post("/signIn", form);
+      setDisabled(false);
       navigateToDashboard();
     } catch (err) {
+      setDisabled(false);
+      console.log("err ->", err);
+
       Toast.show({
         type: "error",
         text1: "Falhou",
         text2: err?.response.data.message ?? "Email ou senha invalidos",
       });
     }
-    setDisabled(false);
   };
 
   return (

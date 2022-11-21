@@ -45,8 +45,9 @@ export const RegisterForm: React.FC = () => {
   const handleSubmit = async () => {
     setDisabled(true);
     try {
-      const formattedForm = objMap(form, (value) => value.trim());
+      const formattedForm = objMap(form, (value: string) => value.trim());
       setForm(formattedForm);
+      //Todo: create a form to store this data to check if logged or not
       const { data } = await api.post("/signUp", formattedForm);
       navigation.navigate("Dashboard");
       Toast.show({

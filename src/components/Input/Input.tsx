@@ -5,7 +5,7 @@ import { styles } from "./styles";
 
 interface Props extends TextInputProps {
   type: string;
-  validation?: (string) => {
+  validation?: (value: string) => {
     error?: string | undefined | null;
     result: string;
   };
@@ -22,7 +22,7 @@ export const Input: React.FC<Props> = ({
   ...props
 }) => {
   const [error, setError] = useState("");
-  const handleChange = (changedValue) => {
+  const handleChange = (changedValue: string) => {
     setDisabled(false);
     let newValue = changedValue;
     if (validation) {
@@ -34,7 +34,7 @@ export const Input: React.FC<Props> = ({
   };
 
   const addFormValue = (inputValue: string) => {
-    setForm((prev) => {
+    setForm((prev: any) => {
       return { ...prev, [type]: inputValue };
     });
   };
