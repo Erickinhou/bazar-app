@@ -2,7 +2,7 @@ import { Text, TextProps } from "react-native";
 import { styles } from "./styles";
 
 interface Props extends TextProps {
-  type: "title" | "paragraph" | "subtitle";
+  type: "title" | "paragraph" | "subtitle" | "largeParagraph";
   children?: React.ReactNode;
 }
 

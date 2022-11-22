@@ -44,8 +44,6 @@ export const LoginForm: React.FC = () => {
       navigateToDashboard();
     } catch (err) {
       setDisabled(false);
-      console.log("err ->", err);
-
       Toast.show({
         type: "error",
         text1: "Falhou",

@@ -10,4 +10,7 @@ export const styles = StyleSheet.create({
   paragraph: {
     fontSize: 12,
   },
+  largeParagraph: {
+    fontSize: 20,
+  },
 });

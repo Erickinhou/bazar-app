@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Text, View } from "react-native";
 import { ScrollView, TextInput } from "react-native-gesture-handler";
-import { SafeAreaView } from "react-native-safe-area-context";
 import Toast from "react-native-toast-message";
 import { Label } from "../Label";
 import { styles } from "./styles";
@@ -45,9 +44,13 @@ export const RegisterForm: React.FC = () => {
   const handleSubmit = async () => {
     setDisabled(true);
     try {
-      const formattedForm = objMap(form, (value: string) => value.trim());
+      const formattedForm = objMap(form, (value: string) =>
+        value.trim()
+      ) as FormI;
+      formattedForm.email = formattedForm.email.toLocaleLowerCase();
       setForm(formattedForm);
-      //Todo: create a form to store this data to check if logged or not
+
+      //Todo: create a way to store this data to check if logged or not
       const { data } = await api.post("/signUp", formattedForm);
       navigation.navigate("Dashboard");
       Toast.show({
