@@ -4,4 +4,6 @@ export const colorPalette = {
   backgroundWhite: "#F8F8F8",
   mediumLight: "#868686",
   danger: "#B00020",
+  white: "#fff",
+  dark: "#000",
 };
