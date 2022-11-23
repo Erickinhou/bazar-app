@@ -17,7 +17,7 @@ This app está na playstore: XXX
 Before starting, make sure you've met the following requirements:
 
 - Clone the project
-- Node `v1.18.2`
+- Node `v16.15.0`
 - Yarn `^1.22.17`
 - (Opcional) Expo go smartphone
 
