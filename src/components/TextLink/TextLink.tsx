@@ -1,31 +1,30 @@
 import React from "react";
-import {
-  Pressable,
-  PressableProps,
-  StyleProp,
-  Text,
-  TextStyle,
-} from "react-native";
-import { styles } from "./ styles";
+import { Pressable, PressableProps, Text } from "react-native";
+import { ColorPalette, colorPalette } from "../../theme/colors";
 
 interface Props extends PressableProps {
   type?: "primary" | "secondary";
-  text: string;
   textAlign?: "auto" | "left" | "right" | "center" | "justify";
+  theme?: keyof ColorPalette;
+  fontSize?: number;
+  children?: React.ReactNode;
 }
 
 export const TextLink: React.FC<Props> = ({
-  text,
   type = "primary",
   textAlign,
+  theme,
+  children,
+  fontSize,
   ...props
 }) => {
   const getTextStyles = () => {
-    return { ...styles[`${type}Text`], textAlign };
+    const color = colorPalette[theme];
+    return { textAlign, color, fontSize };
   };
   return (
     <Pressable {...props}>
-      <Text style={getTextStyles()}>{text}</Text>
+      <Text style={getTextStyles()}>{children}</Text>
     </Pressable>
   );
 };
