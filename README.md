@@ -18,7 +18,7 @@ Before starting, make sure you've met the following requirements:
 
 - Clone the project
 - Node `v16.15.0`
-- Yarn `^1.22.17`
+- Yarn `^1.22.19`
 - (Opcional) Expo go smartphone
 
 ## 👨‍💻 Main Techs
