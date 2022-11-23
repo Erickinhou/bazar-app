@@ -56,7 +56,7 @@ export const ProductSlide = () => {
       <View style={styles.productSlideContainer}>
         <ScrollView horizontal={true}>
           {products.map((product) => {
-            return <ProductCard product={product} />;
+            return <ProductCard key={product.id} product={product} />;
           })}
         </ScrollView>
       </View>

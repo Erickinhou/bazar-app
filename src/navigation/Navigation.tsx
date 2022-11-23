@@ -1,7 +1,7 @@
 import { NavigationContainer, ParamListBase } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { Text } from "react-native";
 import { HamburgerButton } from "../components/HamburgerButton";
+import { SearchBar } from "../components/SearchBar";
 import { Dashboard } from "../screens/Dashboard";
 import { Home } from "../screens/Home";
 import { Login } from "../screens/Login";
@@ -50,15 +50,16 @@ export const Navigation = () => {
           options={{
             ...clearHeaderOptions,
             headerLeft: () => <HamburgerButton />,
-            headerSearchBarOptions: {
-              placeholder: "nome do produto",
-              onChangeText: (value) => {
-                console.log("value ->", value.target);
-              },
-              hideNavigationBar: true,
-              obscureBackground: true,
-              onOpen: () => console.log("hit search"),
-            },
+            // headerSearchBarOptions: {
+            //   placeholder: "nome do produto",
+            //   onChangeText: (value) => {
+            //     console.log("value ->", value.target);
+            //   },
+            //   hideNavigationBar: true,
+            //   obscureBackground: true,
+            //   onOpen: () => console.log("hit search"),
+            // },
+            headerRight: () => <SearchBar />,
           }}
         />
       </Stack.Navigator>
