@@ -17,8 +17,8 @@ export const SearchBar: React.FC = ({}) => {
     const navigate = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
     const [disable, setDisable] = useState(false);
-    const [search, setSearch] = useSearch();
     const [borderColor, setBorderColor] = useState('#C9C9C9');
+    const [search, setSearch] = useSearch();
 
     const handleArrowClick = () => {
         navigate.goBack();

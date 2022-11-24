@@ -6,30 +6,27 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colorPalette.backgroundWhite,
     padding: 20,
-  },
-  noProductContainer: {
-    flex: 1,
-  },
-  noProductHeaderTextContainer: {
     justifyContent: "center",
     alignItems: "center",
+  },
+  interrogationMark: {
+    width: 100,
+    height: 100,
+    resizeMode: "contain",
+    alignSelf: "center",
+    marginBottom: 10,
   },
   noProductFoundText: {
     color: "black",
     fontSize: 28,
     fontWeight: "bold",
     textAlign: "center",
+    marginBottom: 10,
   },
   noProductText: {
     color: "black",
     fontSize: 17,
     fontStyle: "normal",
     textAlign: "center",
-  },
-  interrogationMark: {
-    fontSize: 96,
-    fontStyle: "normal",
-    textAlign: "center",
-    color: colorPalette.primary,
   },
 });
