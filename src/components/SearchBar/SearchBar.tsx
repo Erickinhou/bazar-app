@@ -1,5 +1,8 @@
 import { useState } from 'react';
 import { View, Image, TouchableOpacity } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { RootStackParamList } from "../../navigation/types";
 
 import { useSearch } from '../../context/search';
 import { colorPalette } from '../../theme/colors';
@@ -9,13 +12,17 @@ import { styles } from './styles';
 import searchIcon from '../../../assets/images/searchIcon.png';
 import arrow from '../../../assets/images/arrowLeftIcon.png'
 
-export const SearchBar: React.FC = () => {
+export const SearchBar: React.FC = ({}) => {
 
-    const [open, setOpen] = useState(false);
+    const navigate = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+
     const [disable, setDisable] = useState(false);
     const [search, setSearch] = useSearch();
-
     const [borderColor, setBorderColor] = useState('#C9C9C9');
+
+    const handleArrowClick = () => {
+        navigate.goBack();
+    }
 
     const handleOnFocus = () => {
         setBorderColor(colorPalette.primary);
@@ -26,29 +33,23 @@ export const SearchBar: React.FC = () => {
 
     return (
         <>
-            {open ? (
-                <View style={styles.container}>
-                    <TouchableOpacity onPress={() => setOpen(false)}>
-                        <Image source={arrow} style={styles.arrowLeftIcon} />
-                    </TouchableOpacity>
-                    <View style={[styles.textView, { borderColor: borderColor }]} >
-                        <Image source={searchIcon} style={styles.searchInputIcon} />
-                        <Input
-                            style={styles.textInput}
-                            type='string'
-                            setForm={setSearch}
-                            setDisabled={setDisable}
-                            placeholder='Pesquisar'
-                            onFocus={handleOnFocus}
-                            onBlur={handleOnBlur}
-                        />
-                    </View>
-                </View>
-            ) : (
-                <TouchableOpacity onPress={() => setOpen(true)}>
-                    <Image source={searchIcon} style={styles.searchIcon} />
+            <View style={styles.container}>
+                <TouchableOpacity onPress={() => handleArrowClick()}>
+                    <Image source={arrow} style={styles.arrowLeftIcon} />
                 </TouchableOpacity>
-            )}
+                <View style={[styles.textView, { borderColor: borderColor }]} >
+                    <Image source={searchIcon} style={styles.searchInputIcon} />
+                    <Input
+                        style={styles.textInput}
+                        type='string'
+                        setForm={setSearch}
+                        setDisabled={setDisable}
+                        placeholder='Pesquisar'
+                        onFocus={handleOnFocus}
+                        onBlur={handleOnBlur}
+                    />
+                </View>
+            </View>
         </>
     )
 }
