@@ -1,13 +1,20 @@
-import { NavigationContainer, ParamListBase } from "@react-navigation/native";
+import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { Text } from "react-native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { HamburgerButton } from "../components/HamburgerButton";
 import { Dashboard } from "../screens/Dashboard";
 import { Home } from "../screens/Home";
 import { Login } from "../screens/Login";
 import { Register } from "../screens/Register";
 import { colorPalette } from "../theme/colors";
-import { RootStackParamList } from "./types";
+import { HeaderIconProps, RootStackParamList } from "./types";
+import homeIcon from "../../assets/images/homeIcon.png";
+import buyIcon from "../../assets/images/buyIcon.png";
+import profileIcon from "../../assets/images/profileIcon.png";
+import { Image } from "react-native";
+
+const Stack = createNativeStackNavigator<RootStackParamList>();
+const Tab = createBottomTabNavigator();
 
 const clearHeaderOptions = {
   headerBackVisible: false,
@@ -18,7 +25,60 @@ const clearHeaderOptions = {
   },
 };
 
-const Stack = createNativeStackNavigator<RootStackParamList>();
+const tabStyleOptions = {
+  headerShown: false,
+  tabBarActiveTintColor: colorPalette.primary,
+  tabBarInactiveTintColor: colorPalette.dark,
+
+  tabBarStyle: {
+    backgroundColor: colorPalette.backgroundWhite,
+    elevation: 0,
+    shadowOpacity: 0,
+    borderTopWidth: 0,
+  },
+};
+
+const HeaderIcon = (props: HeaderIconProps) => (
+  <Image
+    source={props.source}
+    style={{
+      tintColor: props.focused ? colorPalette.primary : colorPalette.dark,
+      width: 24,
+      height: 24,
+    }}
+  />
+);
+
+const DashboardTabs = () => {
+  return (
+    <Tab.Navigator>
+      <Tab.Screen
+        name="Dashboard"
+        component={Dashboard}
+        options={{
+          ...tabStyleOptions,
+          tabBarIcon: (props) => <HeaderIcon source={homeIcon} {...props} />,
+        }}
+      />
+      <Tab.Screen
+        name="Profile"
+        component={Dashboard}
+        options={{
+          ...tabStyleOptions,
+          tabBarIcon: (props) => <HeaderIcon source={profileIcon} {...props} />,
+        }}
+      />
+      <Tab.Screen
+        name="Cart"
+        component={Dashboard}
+        options={{
+          ...tabStyleOptions,
+          tabBarIcon: (props) => <HeaderIcon source={buyIcon} {...props} />,
+        }}
+      />
+    </Tab.Navigator>
+  );
+};
 
 //Todo create private route
 export const Navigation = () => {
@@ -45,8 +105,8 @@ export const Navigation = () => {
           }}
         />
         <Stack.Screen
-          name="Dashboard"
-          component={Dashboard}
+          name="DashboardTabs"
+          component={DashboardTabs}
           options={{
             ...clearHeaderOptions,
             headerLeft: () => <HamburgerButton />,

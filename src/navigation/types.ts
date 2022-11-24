@@ -3,6 +3,14 @@ import {
   NativeStackNavigationProp,
   NativeStackScreenProps,
 } from "@react-navigation/native-stack";
+import { ImageSourcePropType } from "react-native";
+
+export interface HeaderIconProps {
+  focused: boolean;
+  color?: string;
+  size?: number;
+  source: ImageSourcePropType;
+}
 
 export interface RootStackParamList extends ParamListBase {
   Home: undefined;
