@@ -4,7 +4,6 @@ import { View, Image, TouchableOpacity } from "react-native";
 import { useSearch } from '../../context/search';
 import { colorPalette } from '../../theme/colors';
 import { Input } from "../Input";
-import { Typography } from '../Typography';
 import { styles } from './styles';
 
 import searchIcon from '../../../assets/images/searchIcon.png';

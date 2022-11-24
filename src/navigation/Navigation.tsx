@@ -50,15 +50,6 @@ export const Navigation = () => {
           options={{
             ...clearHeaderOptions,
             headerLeft: () => <HamburgerButton />,
-            // headerSearchBarOptions: {
-            //   placeholder: "nome do produto",
-            //   onChangeText: (value) => {
-            //     console.log("value ->", value.target);
-            //   },
-            //   hideNavigationBar: true,
-            //   obscureBackground: true,
-            //   onOpen: () => console.log("hit search"),
-            // },
             headerRight: () => <SearchBar />,
           }}
         />
