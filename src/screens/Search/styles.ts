@@ -6,6 +6,22 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colorPalette.backgroundWhite,
     padding: 20,
+    diplay: "grid"
+  },
+  productFoundText: {
+    textAlign: "center",
+  },
+  productListContainer: {
+    flex: 1,
+    flexDirection: "row",
+    flexWrap: "wrap",
+    alignItems: "center",
+    padding: 10,
+  },
+  containerNoProduct: {
+    flex: 1,
+    backgroundColor: colorPalette.backgroundWhite,
+    padding: 20,
     justifyContent: "center",
     alignItems: "center",
   },
