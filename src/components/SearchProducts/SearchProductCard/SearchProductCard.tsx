@@ -4,12 +4,15 @@ import { styles } from "./styles";
 import { Product } from "../../ProductSlide";
 
 interface Props {
-  product: Product;
+  product: Product,
+  position: number
 }
 
-export const SearchProductCard: React.FC<Props> = ({ product }) => {
+export const SearchProductCard: React.FC<Props> = ({ product , position}) => {
   return (
-    <View style={styles.productCardContainer} key={product.id}>
+    <View style={[styles.productCardContainer,
+      position % 2 === 0 ? {marginTop: 10} : {marginTop: 40}
+    ]} key={product.id}>
       <Image
         source={{
           uri: product.images[0],

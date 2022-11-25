@@ -4,13 +4,13 @@ import { colorPalette } from "../../../theme/colors";
 export const styles = StyleSheet.create({
   productCardContainer: {
     width: 150,
+    height: 220,
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: colorPalette.white,
     borderRadius: 20,
     padding: 10,
     marginRight: 20,
-    marginBottom: 10,
     shadowColor: colorPalette.dark,
   },
   thumbnail: {

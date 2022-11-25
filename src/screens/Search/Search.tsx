@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { View, Image, ScrollView } from "react-native";
+import { View, Image, FlatList } from "react-native";
 import { Typography } from "../../components/Typography";
 import { useSearch } from "../../context/search";
 import { ScreenType } from "../../navigation/types";
@@ -21,11 +21,14 @@ export const Search: React.FC<Props> = () => {
       {products.length ? (
         <View style={styles.container}>
           <Typography type="paragraph" style={styles.productFoundText}> {products.length} products found </Typography>
-          <ScrollView contentContainerStyle={styles.productListContainer}>
-            {products.map((product, index) => (
-              <SearchProducts key={product.id} product={product} position={index} />
-            ))}
-          </ScrollView>
+          <View style={styles.productListContainer} >
+            <FlatList
+              data={products}
+              numColumns={2}
+              keyExtractor={(item) => item.id}
+              renderItem={({ item, index }) => <SearchProducts product={item} position={index} />}
+            />
+          </View>
         </View>
       ) : (
         <View style={styles.containerNoProduct}>
