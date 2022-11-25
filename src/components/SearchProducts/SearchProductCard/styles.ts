@@ -4,7 +4,7 @@ import { colorPalette } from "../../../theme/colors";
 export const styles = StyleSheet.create({
   productCardContainer: {
     width: 150,
-    height: 220,
+    maxHeight: 250,
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: colorPalette.white,
@@ -29,6 +29,7 @@ export const styles = StyleSheet.create({
     fontSize: 10,
     color: colorPalette.mediumLight,
     marginTop: 10,
+    overflow: "scroll"
   },
   productPrice: {
     textAlign: "center",
