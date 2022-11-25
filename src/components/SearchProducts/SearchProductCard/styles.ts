@@ -21,15 +21,7 @@ export const styles = StyleSheet.create({
   },
   productTitle: {
     textAlign: "center",
-    fontSize: 12,
     marginTop: 10,
-  },
-  productDescription: {
-    textAlign: "center",
-    fontSize: 10,
-    color: colorPalette.mediumLight,
-    marginTop: 10,
-    overflow: "scroll"
   },
   productPrice: {
     textAlign: "center",

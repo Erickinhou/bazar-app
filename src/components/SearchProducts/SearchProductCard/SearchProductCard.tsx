@@ -11,7 +11,7 @@ interface Props {
 export const SearchProductCard: React.FC<Props> = ({ product , position}) => {
   return (
     <View style={[styles.productCardContainer,
-      position % 2 === 0 ? {marginTop: 10} : {marginTop: 40}
+      position % 2 === 0 ? {marginTop: 0} : {marginTop: 40}
     ]} key={product.id}>
       <Image
         source={{
@@ -19,11 +19,8 @@ export const SearchProductCard: React.FC<Props> = ({ product , position}) => {
         }}
         style={styles.thumbnail}
       />
-      <Typography type="largeParagraph" style={styles.productTitle}>
+      <Typography type="paragraph" style={styles.productTitle}>
         {product.title}
-      </Typography>
-      <Typography type="paragraph" style={styles.productDescription}>
-        {product.description}
       </Typography>
       <Typography type="paragraph" style={styles.productPrice}>
         R$ {product.price}

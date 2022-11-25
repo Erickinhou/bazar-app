@@ -8,22 +8,45 @@ import { Product } from "../../components/ProductSlide";
 import interrogrationMark from "../../../assets/images/interrogationMark.png";
 import data from "./data.json";
 import SearchProducts from "../../components/SearchProducts/SearchProducts";
+import { api } from "../../service";
 
 type Props = ScreenType<"Search">;
 
 export const Search: React.FC<Props> = () => {
 
-  const [products, setProducts] = useState<Product[]>(data);
+  const [products, setProducts] = useState<Product[]>([]);
   const [search, setSearch] = useSearch();
+  const [data, setData] = useState<Product[]>([]);
+
+  useEffect(() => {
+    api.get("/products").then((response) => {
+      const { data } = response;
+      setProducts(data);
+      setData(data);
+    });
+  }, []);
+
+  useEffect(() => {
+    const string = search.string.toLowerCase();
+    if (string) {
+      const filteredProducts = products.filter((product) => {
+        return product.title.toLowerCase().includes(string);
+      });
+      setData(filteredProducts);
+    } else {
+      setData(products);
+    }
+  }, [search]);
+    
 
   return (
     <>
-      {products.length ? (
+      {data.length ? (
         <View style={styles.container}>
-          <Typography type="paragraph" style={styles.productFoundText}> {products.length} products found </Typography>
+          <Typography type="paragraph" style={styles.productFoundText}> {data.length} products found </Typography>
           <View style={styles.productListContainer} >
             <FlatList
-              data={products}
+              data={data}
               numColumns={2}
               keyExtractor={(item) => item.id}
               renderItem={({ item, index }) => <SearchProducts product={item} position={index} />}
