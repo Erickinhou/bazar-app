@@ -1,9 +1,13 @@
 import { AxiosResponse } from "axios";
 import { useEffect, useState } from "react";
-import { ScrollView, Text, View } from "react-native";
+import { Image, ScrollView, Text, View } from "react-native";
+import Toast from "react-native-toast-message";
 import { api } from "../../service";
+import { colorPalette } from "../../theme/colors";
+import { TextLink } from "../TextLink";
 import { CategoryOptions } from "./CategoryOptions";
 import { ProductCard } from "./ProductCard";
+import arrowRightPurpleIcon from "../../../assets/images/arrowRightPurpleIcon.png";
 import { styles } from "./styles";
 
 export interface Category {
@@ -32,13 +36,26 @@ export const ProductSlide = () => {
   const [selectedCategoryId, setSelectedCategoryId] = useState<string>();
 
   const updateProductById = async () => {
-    const { data: updateProducts }: AxiosResponse<Product[]> = await api.get(
-      "/products",
-      {
-        params: { filterByCategoryId: selectedCategoryId },
-      }
-    );
-    setProducts(updateProducts);
+    try {
+      const { data: updateProducts }: AxiosResponse<Product[]> = await api.get(
+        "/products",
+        {
+          params: {
+            filter: {
+              categoryId: selectedCategoryId,
+            },
+          },
+        }
+      );
+      setProducts(updateProducts);
+    } catch (err) {
+      Toast.show({
+        type: "error",
+        text1: "Erro",
+        text2:
+          err?.response.data.message ?? "Não foi possivel conectar ao servidor",
+      });
+    }
   };
 
   useEffect(() => {
@@ -60,6 +77,9 @@ export const ProductSlide = () => {
           })}
         </ScrollView>
       </View>
+      <TextLink theme="primary" textAlign="right">
+        Ver mais <Image source={arrowRightPurpleIcon} />
+      </TextLink>
     </>
   );
 };

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Text, View } from "react-native";
-import { TextInput } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Toast from "react-native-toast-message";
 import { Label } from "../Label";
@@ -78,7 +77,7 @@ export const LoginForm: React.FC = () => {
           setDisabled={setDisabled}
         />
       </View>
-      <TextLink text="Esqueceu a Senha?" />
+      <TextLink theme="primary">Esqueceu a Senha?</TextLink>
       <View style={styles.buttonContainer}>
         <Button
           type="primary"
@@ -89,9 +88,10 @@ export const LoginForm: React.FC = () => {
         <TextLink
           style={styles.createAccount}
           textAlign="center"
-          text="Criar Conta"
           onPressIn={navigateToRegister}
-        />
+        >
+          Criar Conta
+        </TextLink>
       </View>
     </SafeAreaView>
   );
