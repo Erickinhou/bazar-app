@@ -4,12 +4,7 @@ import { styles } from "./styles";
 import { Product } from "../../ProductSlide";
 import interrogrationMark from "../../../../assets/images/interrogationMark.png";
 
-interface Props {
-  product: Product,
-  position: number
-}
-
-export const NoProductFound: React.FC<Props> = () => {
+export const NoProductFound: React.FC = () => {
   return (
     <View>
       <Image source={interrogrationMark} style={styles.interrogationMark} />

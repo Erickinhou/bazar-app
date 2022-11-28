@@ -19,11 +19,11 @@ export const Search: React.FC<Props> = () => {
   const [data, setData] = useState<Product[]>([]);
 
   useEffect(() => {
-    async function getProducts() {
+    async function getProducts(filterName: string) {
       await api.get("/products", {
         params: {
           filter: {
-            search,
+            search: filterName,
           },
         },
       }).then((response) => {
@@ -32,21 +32,9 @@ export const Search: React.FC<Props> = () => {
         setData(data);
       });
     }
-    getProducts();
-  }, []);
-
-  useEffect(() => {
     const string = search.string?.toLowerCase();
-    if (string) {
-      const filteredProducts = products.filter((product) => {
-        return product.title.toLowerCase().includes(string);
-      });
-      setData(filteredProducts);
-    } else {
-      setData(products);
-    }
+    getProducts(string);
   }, [search]);
-
 
   return (
     <>

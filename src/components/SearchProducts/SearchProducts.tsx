@@ -1,14 +1,12 @@
-import { TouchableOpacity } from 'react-native';
-import { SearchProductCard } from './SearchProductCard';
+import { TouchableOpacity, View } from 'react-native';
 import { Product } from '../ProductSlide';
-import { ProductCard } from '../ProductSlide/ProductCard';
+import { ProductCardTest } from '../ProductSlide/ProductCard';
 
 interface Props {
     product: Product,
-    position: number
 }
 
-const SearchProducts: React.FC<Props> = ({ product, position }) => {
+const SearchProducts: React.FC<Props> = ({ product }) => {
 
     const handleButtonClick = () => {
         console.log(product.title)
@@ -16,8 +14,7 @@ const SearchProducts: React.FC<Props> = ({ product, position }) => {
 
     return (
         <TouchableOpacity onPress={() => handleButtonClick()}>
-            {/* <SearchProductCard product={product} position={position}/> */}
-            <ProductCard product={product} />
+            <ProductCardTest product={product} search />
         </TouchableOpacity>
     );
 }

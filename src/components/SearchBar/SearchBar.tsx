@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { View, Image, TouchableOpacity } from "react-native";
+import { View, Image, TouchableOpacity, SafeAreaView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../../navigation/types";
@@ -12,7 +12,7 @@ import { styles } from './styles';
 import searchIcon from '../../../assets/images/searchIcon.png';
 import arrow from '../../../assets/images/arrowLeftIcon.png'
 
-export const SearchBar: React.FC = ({ }) => {
+export const SearchBar: React.FC = () => {
 
     const navigate = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 

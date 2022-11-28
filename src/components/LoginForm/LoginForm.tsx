@@ -81,7 +81,7 @@ export const LoginForm: React.FC = () => {
       <View style={styles.buttonContainer}>
         <Button
           type="primary"
-          text="Entar"
+          text="Entrar"
           onPressIn={handleLogin}
           disabled={disabled}
         />

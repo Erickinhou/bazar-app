@@ -2,31 +2,26 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
     container: {
+        flex: 1,
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "center",
-        width: "95%",
-        padding: 10,
+        marginRight: 40,
     },
     textView: {
+        flex: 1,
         flexDirection: "row",
         alignItems: "center",
-        width: "95%",
         padding: 10,
         borderWidth: 1,
         borderRadius: 30,
         overflow: "hidden",
     },
     textInput: {
-        minWidth: "90%",
-        maxWidth: "90%",
+        minWidth: "100%",
         marginHorizontal: 10,
         overflow: "scroll",
         fontSize: 12,
-    },
-    searchIcon: {
-        width: 18,
-        height: 18,
     },
     searchInputIcon: {
         width: 15,

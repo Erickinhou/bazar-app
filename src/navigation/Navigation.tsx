@@ -121,7 +121,7 @@ export const Navigation = () => {
           component={Search}
           options={{
             ...clearHeaderOptions,
-            headerLeft: () => <SearchBar />,
+            headerTitle: () => <SearchBar />,
           }}
         />
       </Stack.Navigator>
