@@ -6,7 +6,7 @@ import { api } from "../../service";
 import { colorPalette } from "../../theme/colors";
 import { TextLink } from "../TextLink";
 import { CategoryOptions } from "./CategoryOptions";
-import { ProductCardTest } from "./ProductCard";
+import { ProductCard } from "./ProductCard";
 import arrowRightPurpleIcon from "../../../assets/images/arrowRightPurpleIcon.png";
 import { styles } from "./styles";
 
@@ -73,7 +73,7 @@ export const ProductSlide = () => {
       <View style={styles.productSlideContainer}>
         <ScrollView horizontal={true}>
           {products.map((product) => {
-            return <ProductCardTest key={product.id} product={product} />;
+            return <ProductCard key={product.id} product={product} />;
           })}
         </ScrollView>
       </View>

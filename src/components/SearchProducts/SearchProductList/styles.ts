@@ -8,6 +8,7 @@ export const styles = StyleSheet.create({
   productListContainer: {
     flex: 1,
     alignItems: "center",
+    justifyContent: "center",
     padding: 10,
   },
 });
