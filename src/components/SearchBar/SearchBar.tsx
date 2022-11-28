@@ -18,7 +18,7 @@ export const SearchBar: React.FC = ({ }) => {
 
     const [disable, setDisable] = useState(false);
     const [borderColor, setBorderColor] = useState('#C9C9C9');
-    const [search, setSearch] = useSearch();
+    const [search, setSearch] = useSearch<string>();
 
     const handleArrowClick = () => {
         navigate.goBack();
@@ -42,7 +42,7 @@ export const SearchBar: React.FC = ({ }) => {
                     <Input
                         style={styles.textInput}
                         type='string'
-                        setForm={setSearch}
+                        onChangeInput={setSearch}
                         setDisabled={setDisable}
                         placeholder='Pesquisar'
                         onFocus={handleOnFocus}

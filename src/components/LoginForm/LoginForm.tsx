@@ -60,7 +60,7 @@ export const LoginForm: React.FC = () => {
           placeholder="E-mail"
           type="email"
           value={form.email}
-          setForm={setForm}
+          onChangeInput={setForm}
           setDisabled={setDisabled}
           validation={validateEmail}
         />
@@ -73,7 +73,7 @@ export const LoginForm: React.FC = () => {
           type="password"
           secureTextEntry={true}
           value={form.password}
-          setForm={setForm}
+          onChangeInput={setForm}
           setDisabled={setDisabled}
         />
       </View>
