@@ -6,6 +6,7 @@ export interface ColorPalette {
   danger: string;
   white: string;
   dark: string;
+  black: string;
 }
 
 export const colorPalette: ColorPalette = {

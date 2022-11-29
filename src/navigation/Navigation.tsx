@@ -1,17 +1,19 @@
+import { Image } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { HeaderIconProps, RootStackParamList } from "./types";
+import { colorPalette } from "../theme/colors";
+import homeIcon from "../../assets/images/homeIcon.png";
+import buyIcon from "../../assets/images/buyIcon.png";
+import profileIcon from "../../assets/images/profileIcon.png";
+
 import { HamburgerButton } from "../components/HamburgerButton";
 import { Dashboard } from "../screens/Dashboard";
 import { Home } from "../screens/Home";
 import { Login } from "../screens/Login";
 import { Register } from "../screens/Register";
-import { colorPalette } from "../theme/colors";
-import { HeaderIconProps, RootStackParamList } from "./types";
-import homeIcon from "../../assets/images/homeIcon.png";
-import buyIcon from "../../assets/images/buyIcon.png";
-import profileIcon from "../../assets/images/profileIcon.png";
-import { Image } from "react-native";
+import { ProfileMenu } from "../screens/ProfileMenu";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator();
@@ -102,6 +104,17 @@ export const Navigation = () => {
             title: "Registro de conta nova",
             headerStyle: { backgroundColor: colorPalette.primary },
             headerTintColor: colorPalette.backgroundWhite,
+          }}
+        />
+        <Stack.Screen
+          name="ProfileMenu"
+          component={ProfileMenu}
+          options={{
+            headerShadowVisible: false,
+            title: "Meu Perfil",
+            headerStyle: {
+              backgroundColor: colorPalette.backgroundWhite,
+            },
           }}
         />
         <Stack.Screen
