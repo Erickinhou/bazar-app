@@ -113,7 +113,7 @@ export const Navigation = () => {
           options={{
             ...clearHeaderOptions,
             headerLeft: () => <HamburgerButton />,
-            headerRight: () => <SearchButton navigation={"Search"} />,
+            headerRight: () => <SearchButton />,
           }}
         />
         <Stack.Screen
