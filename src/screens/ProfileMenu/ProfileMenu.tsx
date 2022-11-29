@@ -3,7 +3,7 @@ import { ScreenType } from "../../navigation/types";
 import { ProfileButton } from "../../components/ProfileButton";
 import { styles } from "./styles";
 
-type Props = ScreenType<"Profile">;
+type Props = ScreenType<"ProfileMenu">;
 
 const menu = [
   {

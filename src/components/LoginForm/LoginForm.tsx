@@ -88,7 +88,7 @@ export const LoginForm: React.FC = () => {
         <TextLink
           style={styles.createAccount}
           textAlign="center"
-          onPressIn={() => navigation.push("Profile")}
+          onPressIn={navigateToRegister}
         >
           Criar Conta
         </TextLink>

@@ -14,6 +14,7 @@ import { Home } from "../screens/Home";
 import { Login } from "../screens/Login";
 import { Register } from "../screens/Register";
 import { ProfileMenu } from "../screens/ProfileMenu";
+import { Profile } from "../screens/Profile";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator();
@@ -30,7 +31,7 @@ const clearHeaderOptions = {
 const tabStyleOptions = {
   headerShown: false,
   tabBarActiveTintColor: colorPalette.primary,
-  tabBarInactiveTintColor: colorPalette.dark,
+  tabBarInactiveTintColor: colorPalette.mediumLight,
 
   tabBarStyle: {
     backgroundColor: colorPalette.backgroundWhite,
@@ -44,7 +45,9 @@ const HeaderIcon = (props: HeaderIconProps) => (
   <Image
     source={props.source}
     style={{
-      tintColor: props.focused ? colorPalette.primary : colorPalette.dark,
+      tintColor: props.focused
+        ? colorPalette.primary
+        : colorPalette.mediumLight,
       width: 24,
       height: 24,
     }}
@@ -64,7 +67,7 @@ const DashboardTabs = () => {
       />
       <Tab.Screen
         name="Profile"
-        component={Dashboard}
+        component={Profile}
         options={{
           ...tabStyleOptions,
           tabBarIcon: (props) => <HeaderIcon source={profileIcon} {...props} />,
