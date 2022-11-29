@@ -2,11 +2,11 @@ import { useState } from 'react';
 import { View, Image, TouchableOpacity, SafeAreaView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { RootStackParamList } from "../../navigation/types";
+import { RootStackParamList } from "../../../navigation/types";
 
-import { useSearch } from '../../context/search';
-import { colorPalette } from '../../theme/colors';
-import { Input } from "../Input";
+import { useSearch } from '../../../context/search';
+import { colorPalette } from '../../../theme/colors';
+import { Input } from "../../Input";
 import { styles } from './styles';
 
 import searchIcon from '../../../assets/images/searchIcon.png';

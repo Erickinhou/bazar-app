@@ -5,10 +5,10 @@ import { useSearch } from "../../context/search";
 import { ScreenType } from "../../navigation/types";
 import { styles } from "./styles";
 import { Product } from "../../components/ProductSlide";
-import SearchProducts from "../../components/SearchProducts/SearchProducts";
+import SearchProducts from "../../components/Search/SearchProducts";
 import { api } from "../../service";
-import { NoProductFound } from "../../components/SearchProducts/NoProductFound";
-import { SearchProductList } from "../../components/SearchProducts/SearchProductList";
+import { NoProductFound } from "../../components/NoProductFound";
+import { SearchProductList } from "../../components/Search/SearchProductList";
 
 type Props = ScreenType<"Search">;
 
