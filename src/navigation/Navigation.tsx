@@ -1,6 +1,7 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createDrawerNavigator } from "@react-navigation/drawer";
 import { HamburgerButton } from "../components/HamburgerButton";
 import { SearchBar } from "../components/Search/SearchBar";
 import { SearchButton } from "../components/Search/SearchButton";
@@ -18,6 +19,7 @@ import { Image } from "react-native";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator();
+const Drawer = createDrawerNavigator();
 
 const clearHeaderOptions = {
   headerBackVisible: false,
@@ -51,6 +53,16 @@ const HeaderIcon = (props: HeaderIconProps) => (
     }}
   />
 );
+
+const SideMenu = () => {
+  return (
+    <Drawer.Navigator>
+      <Drawer.Screen name="Home" component={Home} />
+      <Drawer.Screen name="Login" component={Login} />
+      <Drawer.Screen name="Register" component={Register} />
+    </Drawer.Navigator>
+  );
+};
 
 const DashboardTabs = () => {
   return (
