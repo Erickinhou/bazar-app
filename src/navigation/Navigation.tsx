@@ -2,10 +2,13 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { HamburgerButton } from "../components/HamburgerButton";
+import { SearchBar } from "../components/Search/SearchBar";
+import { SearchButton } from "../components/Search/SearchButton";
 import { Dashboard } from "../screens/Dashboard";
 import { Home } from "../screens/Home";
 import { Login } from "../screens/Login";
 import { Register } from "../screens/Register";
+import { Search } from "../screens/Search";
 import { colorPalette } from "../theme/colors";
 import { HeaderIconProps, RootStackParamList } from "./types";
 import homeIcon from "../../assets/images/homeIcon.png";
@@ -110,15 +113,15 @@ export const Navigation = () => {
           options={{
             ...clearHeaderOptions,
             headerLeft: () => <HamburgerButton />,
-            headerSearchBarOptions: {
-              placeholder: "nome do produto",
-              onChangeText: (value) => {
-                console.log("value ->", value.target);
-              },
-              hideNavigationBar: true,
-              obscureBackground: true,
-              onOpen: () => console.log("hit search"),
-            },
+            headerRight: () => <SearchButton />,
+          }}
+        />
+        <Stack.Screen
+          name="Search"
+          component={Search}
+          options={{
+            ...clearHeaderOptions,
+            headerTitle: () => <SearchBar />,
           }}
         />
       </Stack.Navigator>

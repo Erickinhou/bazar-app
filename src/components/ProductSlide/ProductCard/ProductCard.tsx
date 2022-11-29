@@ -1,30 +1,47 @@
-import { Image, View } from "react-native";
+import { Image, TouchableOpacity, View } from "react-native";
 import { Typography } from "../../Typography";
 import { Product } from "../ProductSlide";
-import { styles } from "./styles";
+import { ProductCardHOC } from "../../../hoc/ProductsCardStyle";
 
 interface Props {
-  product: Product;
+  product: Product,
+  style?: {
+    productCardContainer: object,
+    thumbnail: object,
+    productTitle: object,
+    productDescription: object,
+    productPrice: object,
+  }
 }
 
-export const ProductCard: React.FC<Props> = ({ product }) => {
+const ProductCardComponent: React.FC<Props> = ({ product, style }) => {
+
+  const handleButtonClick = () => {
+    console.log(product.title)
+  }
+
   return (
-    <View style={styles.productCardContainer} key={product.id}>
-      <Image
-        source={{
-          uri: product.images[0],
-        }}
-        style={styles.thumbnail}
-      />
-      <Typography type="largeParagraph" style={styles.productTitle}>
-        {product.title}
-      </Typography>
-      <Typography type="paragraph" style={styles.productDescription}>
-        {product.description}
-      </Typography>
-      <Typography type="paragraph" style={styles.productPrice}>
-        R$ {product.price}
-      </Typography>
-    </View>
+    <TouchableOpacity onPress={() => handleButtonClick()}>
+      <View style={style.productCardContainer} key={product.id}>
+        <Image
+          source={{
+            uri: product.images[0],
+          }}
+          style={style.thumbnail}
+        />
+        <Typography type="largeParagraph" style={style.productTitle}>
+          {product.title}
+        </Typography>
+        <Typography type="paragraph" style={style.productDescription}>
+          {product.description}
+        </Typography>
+        <Typography type="paragraph" style={style.productPrice}>
+          R$ {product.price}
+        </Typography>
+      </View>
+    </TouchableOpacity>
   );
 };
+
+export const ProductCard = ProductCardHOC(ProductCardComponent);
+
