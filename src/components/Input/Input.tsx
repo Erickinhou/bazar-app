@@ -9,14 +9,14 @@ interface Props extends TextInputProps {
     error?: string | undefined | null;
     result: string;
   };
-  setForm: React.Dispatch<React.SetStateAction<any>>;
+  onChangeInput: React.Dispatch<React.SetStateAction<any>>;
   setDisabled: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const Input: React.FC<Props> = ({
   value,
   type,
-  setForm,
+  onChangeInput,
   validation,
   setDisabled,
   ...props
@@ -34,7 +34,7 @@ export const Input: React.FC<Props> = ({
   };
 
   const addFormValue = (inputValue: string) => {
-    setForm((prev: any) => {
+    onChangeInput((prev: any) => {
       return { ...prev, [type]: inputValue };
     });
   };
