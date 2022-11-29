@@ -9,8 +9,8 @@ import { colorPalette } from '../../../theme/colors';
 import { Input } from "../../Input";
 import { styles } from './styles';
 
-import searchIcon from '../../../assets/images/searchIcon.png';
-import arrow from '../../../assets/images/arrowLeftIcon.png'
+import searchIcon from '../../../../assets/images/searchIcon.png';
+import arrow from '../../../../assets/images/arrowLeftIcon.png'
 
 export const SearchBar: React.FC = () => {
 

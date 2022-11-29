@@ -45,9 +45,6 @@ export const styles = {
       padding: 10,
       marginRight: 20,
       shadowColor: colorPalette.dark,
-      nthChild: {
-        marginTop: 20,
-      },
     },
     thumbnail: {
       height: 75,

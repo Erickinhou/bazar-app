@@ -2,9 +2,9 @@ import { Image, TouchableOpacity } from "react-native";
 import { styles } from './styles';
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { RootStackParamList } from "../../navigation/types";
+import { RootStackParamList } from "../../../navigation/types";
 
-import searchIcon from '../../../assets/images/searchIcon.png';
+import searchIcon from '../../../../assets/images/searchIcon.png';
 
 interface Props {
     navigation: string;

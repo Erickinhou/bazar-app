@@ -2,7 +2,7 @@ import { Image, View } from "react-native";
 import { Typography } from "../Typography";
 import { styles } from "./styles";
 import { Product } from "../ProductSlide";
-import interrogrationMark from "../../../../assets/images/interrogationMark.png";
+import interrogrationMark from "../../../assets/images/interrogationMark.png";
 
 export const NoProductFound: React.FC = () => {
   return (

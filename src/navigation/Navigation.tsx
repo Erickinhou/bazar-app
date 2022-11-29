@@ -3,7 +3,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { HamburgerButton } from "../components/HamburgerButton";
 import { SearchBar } from "../components/Search/SearchBar";
-import { SearchButton } from "../components/SearchButton";
+import { SearchButton } from "../components/Search/SearchButton";
 import { Dashboard } from "../screens/Dashboard";
 import { Home } from "../screens/Home";
 import { Login } from "../screens/Login";
