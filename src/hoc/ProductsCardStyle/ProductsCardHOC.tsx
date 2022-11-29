@@ -1,7 +1,9 @@
 import React from "react";
+import { Product } from "../../components/ProductSlide";
 import { styles } from "./styles";
 
-const treatStyles = (props: any) => {
+
+const treatStyles = (props: T) => {
   if (props?.search) {
     let newStyles = { ...styles.search };
     if (props?.index % 2 === 0) {
@@ -20,8 +22,14 @@ const treatStyles = (props: any) => {
   return styles.default;
 };
 
-export function ProductCardHOC(WrappedComponent: React.FC) {
-  return (props: any) => (
+interface Props {
+  product: Product;
+  search?: boolean;
+  index?: number;
+}
+
+export function ProductCardHOC(WrappedComponent: React.FC<Props>) {
+  return (props: Props) => (
     <WrappedComponent
       product={props?.product}
       style={treatStyles(props)}

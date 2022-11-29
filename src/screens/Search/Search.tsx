@@ -44,8 +44,7 @@ export const Search: React.FC<Props> = () => {
         <View style={styles.containerNoProduct}>
           <NoProductFound />
         </View>
-      )
-      }
+      )}
     </>
   );
 };

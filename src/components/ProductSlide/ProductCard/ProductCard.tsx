@@ -5,7 +5,13 @@ import { ProductCardHOC } from "../../../hoc/ProductsCardStyle";
 
 interface Props {
   product: Product,
-  style?: any
+  style?: {
+    productCardContainer: object,
+    thumbnail: object,
+    productTitle: object,
+    productDescription: object,
+    productPrice: object,
+  }
 }
 
 const ProductCardComponent: React.FC<Props> = ({ product, style }) => {
@@ -16,7 +22,7 @@ const ProductCardComponent: React.FC<Props> = ({ product, style }) => {
 
   return (
     <TouchableOpacity onPress={() => handleButtonClick()}>
-      <View style={[style.productCardContainer, style]} key={product.id}>
+      <View style={style.productCardContainer} key={product.id}>
         <Image
           source={{
             uri: product.images[0],
