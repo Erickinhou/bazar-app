@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
-import { View, Image, FlatList } from "react-native";
-import { Typography } from "../../components/Typography";
+import { View } from "react-native";
 import { useSearch } from "../../context/search";
 import { ScreenType } from "../../navigation/types";
 import { styles } from "./styles";
 import { Product } from "../../components/ProductSlide";
-import SearchProducts from "../../components/Search/SearchProducts";
 import { api } from "../../service";
 import { NoProductFound } from "../../components/NoProductFound";
 import { SearchProductList } from "../../components/Search/SearchProductList";
