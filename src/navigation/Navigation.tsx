@@ -54,21 +54,6 @@ const HeaderIcon = (props: HeaderIconProps) => (
   />
 );
 
-const SideMenu = () => {
-  return (
-    <Drawer.Navigator
-      initialRouteName="Dashboard"
-    >
-      <Drawer.Screen name="Perfil" component={Dashboard} />
-      <Drawer.Screen name="Meus pedidos" component={Dashboard} />
-      <Drawer.Screen name="Favoritos" component={Dashboard} />
-      <Drawer.Screen name="Entrega" component={Dashboard} />
-      <Drawer.Screen name="Pedidos" component={Dashboard} />
-      <Drawer.Screen name="Sair" component={Dashboard} />
-    </Drawer.Navigator>
-  );
-};
-
 const DashboardTabs = () => {
   return (
     <Tab.Navigator>
@@ -100,11 +85,43 @@ const DashboardTabs = () => {
   );
 };
 
+export const DrawerMenu = () => {
+  return (
+    <Drawer.Navigator
+      initialRouteName="DashboardTabs"
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
+      <Drawer.Screen name="Perfil" component={DashboardTabs} />
+      <Drawer.Screen name="Meus pedidos" component={DashboardTabs} />
+      <Drawer.Screen name="Favoritos" component={DashboardTabs} />
+      <Drawer.Screen name="Entrega" component={DashboardTabs} />
+      <Drawer.Screen name="Pedidos" component={DashboardTabs} />
+      <Drawer.Screen name="Sair" component={DashboardTabs} />
+    </Drawer.Navigator>
+  );
+};
+
 //Todo create private route
 export const Navigation = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        <Stack.Screen
+          name="DrawerMenu"
+          component={DrawerMenu}
+          options={{
+            ...clearHeaderOptions,
+            headerLeft: () => <HamburgerButton />,
+            headerRight: () => <SearchButton />,
+          }}
+        />
+        <Stack.Screen
+          name="DashboardTabs"
+          component={DashboardTabs}
+          options={{ headerShown: false }}
+        />
         <Stack.Screen
           name="Home"
           component={Home}
@@ -122,15 +139,6 @@ export const Navigation = () => {
             title: "Registro de conta nova",
             headerStyle: { backgroundColor: colorPalette.primary },
             headerTintColor: colorPalette.backgroundWhite,
-          }}
-        />
-        <Stack.Screen
-          name="DashboardTabs"
-          component={DashboardTabs}
-          options={{
-            ...clearHeaderOptions,
-            headerLeft: () => <HamburgerButton />,
-            headerRight: () => <SearchButton />,
           }}
         />
         <Stack.Screen
