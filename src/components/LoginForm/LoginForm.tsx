@@ -15,6 +15,7 @@ import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../../navigation/types";
 import { useUser } from "../../context/user";
+import { Typography } from "../Typography";
 
 interface FormI {
   password: string;
@@ -62,7 +63,9 @@ export const LoginForm: React.FC = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.title}>Login</Text>
+      <Typography type="title" style={styles.title}>
+        Login
+      </Typography>
       <View style={styles.containerInput}>
         <Label icon={messageIcon}>Email</Label>
         <Input

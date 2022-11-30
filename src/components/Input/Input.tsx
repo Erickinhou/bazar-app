@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Text, TextInputProps, View } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
+import { Typography } from "../Typography";
 import { styles } from "./styles";
 
 export interface InputDataChangeProps {
@@ -53,7 +54,11 @@ export const Input: React.FC<Props> = ({
         onChangeText={handleChange}
         {...props}
       />
-      {error && <Text style={styles.textError}>{error}</Text>}
+      {error && (
+        <Typography type="paragraph" style={styles.textError}>
+          {error}
+        </Typography>
+      )}
     </View>
   );
 };

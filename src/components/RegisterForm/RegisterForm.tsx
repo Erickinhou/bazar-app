@@ -21,6 +21,7 @@ import { objMap } from "../../utils";
 import { useNavigation } from "@react-navigation/native";
 import { NavigationProps } from "../../navigation/types";
 import { useUser } from "../../context/user";
+import { Typography } from "../Typography";
 
 interface FormI {
   name: string;
@@ -84,7 +85,9 @@ export const RegisterForm: React.FC = () => {
       automaticallyAdjustKeyboardInsets={true}
       style={styles.container}
     >
-      <Text style={styles.title}>Crie uma nova conta</Text>
+      <Typography type="subtitle" style={styles.title}>
+        Crie uma nova conta
+      </Typography>
       <View style={styles.containerInput}>
         <Label icon={accountIcon}>Nome</Label>
         <Input

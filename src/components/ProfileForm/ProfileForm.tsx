@@ -21,6 +21,7 @@ import { objMap } from "../../utils";
 import { useNavigation } from "@react-navigation/native";
 import { NavigationProps } from "../../navigation/types";
 import { useUser } from "../../context/user";
+import { Typography } from "../Typography";
 
 interface FormI {
   name: string;
@@ -82,7 +83,9 @@ export const ProfileForm: React.FC = () => {
       automaticallyAdjustKeyboardInsets={true}
       style={styles.container}
     >
-      <Text style={styles.title}> Perfil de Usuário </Text>
+      <Typography type="subtitle" style={styles.title}>
+        Perfil de Usuário
+      </Typography>
       <View style={styles.containerInput}>
         <Label icon={accountIcon}>Nome</Label>
         <Input

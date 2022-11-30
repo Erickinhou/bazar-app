@@ -15,7 +15,6 @@ export const styles = StyleSheet.create({
     borderColor: colorPalette.mediumLight,
   },
   title: {
-    fontSize: 24,
     marginBottom: 20,
   },
   buttonContainer: {

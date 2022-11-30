@@ -1,6 +1,7 @@
 import { Image, Pressable, PressableProps, Text, View } from "react-native";
 import { styles } from "./styles";
 import arrowLeftIcon from "../.././../assets/images/arrowLeftIcon.png";
+import { Typography } from "../Typography";
 
 interface Props extends PressableProps {
   option: {
@@ -16,7 +17,9 @@ export const ProfileButton: React.FC<Props> = ({ option, ...rest }) => {
   return (
     <View style={styles.container}>
       <Pressable onPressIn={handleClick} style={styles.button} {...rest}>
-        <Text style={styles.text}>{option.title}</Text>
+        <Typography type="paragraph" style={styles.text}>
+          {option.title}
+        </Typography>
         <Image style={styles.icon} source={arrowLeftIcon} />
       </Pressable>
     </View>

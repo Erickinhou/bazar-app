@@ -1,4 +1,5 @@
 import { Image, ImageSourcePropType, Text, View } from "react-native";
+import { Typography } from "../Typography";
 import { styles } from "./styles";
 
 type Props = {
@@ -10,7 +11,9 @@ export const Label: React.FC<Props> = ({ children, icon }) => {
   return (
     <View style={styles.container}>
       {icon && <Image style={styles.icon} source={icon} />}
-      <Text style={styles.text}>{children}</Text>
+      <Typography type="paragraph" style={styles.text}>
+        {children}
+      </Typography>
     </View>
   );
 };
