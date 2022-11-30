@@ -9,11 +9,12 @@ import lockIcon from "../../../assets/images/lockIcon.png";
 import { TextLink } from "../TextLink";
 import { Button } from "../Button";
 import { api } from "../../service";
-import { Input } from "../Input";
+import { Input, InputDataChangeProps } from "../Input";
 import { validateEmail } from "../../validation";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../../navigation/types";
+import { useUser } from "../../context/user";
 
 interface FormI {
   password: string;
@@ -25,6 +26,7 @@ export const LoginForm: React.FC = () => {
   const [disabled, setDisabled] = useState(false);
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const [_, setUser] = useUser();
 
   const navigateToRegister = () => {
     navigation.navigate("Register");
@@ -38,7 +40,8 @@ export const LoginForm: React.FC = () => {
     setDisabled(true);
     try {
       form.email = form.email.toLocaleLowerCase().trim();
-      const { data } = await api.post("/signIn", form);
+      const { data: user } = await api.post("/signIn", form);
+      setUser(user);
       setDisabled(false);
       navigateToDashboard();
     } catch (err) {
@@ -51,6 +54,12 @@ export const LoginForm: React.FC = () => {
     }
   };
 
+  const addFormValue = ({ value, type }: InputDataChangeProps) => {
+    setForm((prev: any) => {
+      return { ...prev, [type]: value };
+    });
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.title}>Login</Text>
@@ -60,7 +69,7 @@ export const LoginForm: React.FC = () => {
           placeholder="E-mail"
           type="email"
           value={form.email}
-          onChangeInput={setForm}
+          onChangeInput={addFormValue}
           setDisabled={setDisabled}
           validation={validateEmail}
         />
@@ -73,7 +82,7 @@ export const LoginForm: React.FC = () => {
           type="password"
           secureTextEntry={true}
           value={form.password}
-          onChangeInput={setForm}
+          onChangeInput={addFormValue}
           setDisabled={setDisabled}
         />
       </View>

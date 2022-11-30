@@ -3,13 +3,17 @@ import { Text, TextInputProps, View } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
 import { styles } from "./styles";
 
+export interface InputDataChangeProps {
+  value: string;
+  type: string;
+}
 interface Props extends TextInputProps {
   type: string;
   validation?: (value: string) => {
     error?: string | undefined | null;
     result: string;
   };
-  onChangeInput: React.Dispatch<React.SetStateAction<any>>;
+  onChangeInput: (props: InputDataChangeProps) => void;
   setDisabled: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
@@ -30,13 +34,7 @@ export const Input: React.FC<Props> = ({
       handleError(error);
       newValue = result;
     }
-    addFormValue(newValue);
-  };
-
-  const addFormValue = (inputValue: string) => {
-    onChangeInput((prev: any) => {
-      return { ...prev, [type]: inputValue };
-    });
+    onChangeInput({ value: newValue, type });
   };
 
   const handleError = (error: string) => {

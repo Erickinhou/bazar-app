@@ -11,34 +11,31 @@ import { SearchProductList } from "../../components/Search/SearchProductList";
 type Props = ScreenType<"Search">;
 
 export const Search: React.FC<Props> = () => {
-
   const [products, setProducts] = useState<Product[]>([]);
-  const [search, setSearch] = useSearch('');
+  const [search] = useSearch();
   const [data, setData] = useState<Product[]>([]);
 
   useEffect(() => {
     async function getProducts(filterName: string) {
-      await api.get("/products", {
+      const { data } = await api.get("/products", {
         params: {
           filter: {
             search: filterName,
           },
         },
-      }).then((response) => {
-        const { data } = response;
-        setProducts(data);
-        setData(data);
       });
+
+      setProducts(data);
     }
-    const string = search.string?.toLowerCase();
-    getProducts(string);
+    const searchLowerCase = search.toLowerCase();
+    getProducts(searchLowerCase);
   }, [search]);
 
   return (
     <>
       {data.length ? (
         <View style={styles.container}>
-          <SearchProductList data={data} />
+          <SearchProductList products={products} />
         </View>
       ) : (
         <View style={styles.containerNoProduct}>
