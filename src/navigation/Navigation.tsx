@@ -1,8 +1,11 @@
+import React, { useEffect } from "react";
+import Animated, { Adaptable, color } from "react-native-reanimated";
 import { Image } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { createDrawerNavigator, DrawerContentScrollView, DrawerItem } from "@react-navigation/drawer";
+import { createDrawerNavigator, useDrawerProgress, useDrawerStatus } from "@react-navigation/drawer";
+
 import { HeaderIconProps, RootStackParamList } from "./types";
 import { colorPalette } from "../theme/colors";
 import homeIcon from "../../assets/images/homeIcon.png";
@@ -88,27 +91,41 @@ const DashboardTabs = () => {
         }}
       />
     </Tab.Navigator>
+
   );
 };
 
-export const DrawerMenu = () => {
+const StackScreen = (props: T) => {
+  const isDrawer = useDrawerStatus() === "open";
+  const progress: any = useDrawerProgress();
+  const scale = Animated.interpolateNode(progress, {
+    inputRange: [0, 1],
+    outputRange: [1, 0.8],
+  });
+  const borderRadius = Animated.interpolateNode(progress, {
+    inputRange: [0, 1],
+    outputRange: [1, 40],
+  });
+  const animatedStyles = { borderRadius, transform: [{ scale }] };
+
   return (
-    <Drawer.Navigator
-      screenOptions={{
-        headerShown: false,
-      }}
-      drawerContent={(props) => <DrawerContent {...props} />}
+    <Animated.View 
+      style={[
+        { flex: 1 }, 
+        isDrawer ? { borderWidth: 15, borderColor: colorPalette.backgroundWhite } : null,
+        animatedStyles
+      ]}
     >
-      <Drawer.Screen name="DashboardTabs" component={DashboardTabs} />
-    </Drawer.Navigator>
-  );
-};
-
-//Todo create private route
-export const Navigation = () => {
-  return (
-    <NavigationContainer>
       <Stack.Navigator>
+        <Stack.Screen
+          name="DashboardTabs"
+          component={DashboardTabs}
+          options={{
+            ...clearHeaderOptions,
+            headerLeft: () => <HamburgerButton />,
+            headerRight: () => <SearchButton />,
+          }}
+        />
         <Stack.Screen
           name="Home"
           component={Home}
@@ -140,15 +157,6 @@ export const Navigation = () => {
           }}
         />
         <Stack.Screen
-          name="DashboardTabs"
-          component={DashboardTabs}
-          options={{
-            ...clearHeaderOptions,
-            headerLeft: () => <HamburgerButton />,
-            headerRight: () => <SearchButton />,
-          }}
-        />
-        <Stack.Screen
           name="Search"
           component={Search}
           options={{
@@ -157,6 +165,50 @@ export const Navigation = () => {
           }}
         />
       </Stack.Navigator>
+    </Animated.View>
+  );
+};
+
+const DrawerMenu = () => {
+  return (
+    <Drawer.Navigator
+      screenOptions={{
+        headerShown: false,
+        swipeEnabled: false,
+        drawerType: "slide",
+        overlayColor: "transparent",
+        drawerActiveBackgroundColor: colorPalette.primary,
+        drawerActiveTintColor: colorPalette.backgroundWhite,
+        drawerInactiveTintColor: colorPalette.backgroundWhite,
+        drawerStyle: {
+          backgroundColor: colorPalette.primary,
+          width: "55%",
+        },
+        drawerContentContainerStyle: {
+          flex: 1,
+        },
+        sceneContainerStyle: {
+          backgroundColor: colorPalette.primary,
+        },
+      }}
+      useLegacyImplementation
+      drawerContent={(props: T) => {
+        return <DrawerContent {...props} />
+      }}
+
+    >
+      <Drawer.Screen name="Screens">
+        {props => <StackScreen {...props} />}
+      </Drawer.Screen>
+    </Drawer.Navigator>
+  );
+};
+
+//Todo create private route
+export const Navigation = () => {
+  return (
+    <NavigationContainer>
+      <DrawerMenu />
     </NavigationContainer>
   );
 };

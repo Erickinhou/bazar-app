@@ -58,7 +58,7 @@ export const RegisterForm: React.FC = () => {
       const { data: user } = await api.post("/signUp", formattedForm);
 
       setUser(user);
-      navigation.navigate("Dashboard");
+      navigation.navigate("DashboardTabs");
       Toast.show({
         type: "success",
         text1: "Registro concluido",

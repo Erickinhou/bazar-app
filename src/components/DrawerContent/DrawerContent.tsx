@@ -1,12 +1,31 @@
 import { DrawerContentScrollView, DrawerItem } from "@react-navigation/drawer";
+import { View, Image } from "react-native";
 
-export const DrawerContent = (props: T) => {
+import { styles } from "./styles";
+import { buttons } from "./buttons";
+
+import iconGerandoFalcoes from "../../../assets/images/iconGerandoFalcoes.png";
+
+export const DrawerContent: React.FC = (props: T) => {
     return (
-        <DrawerContentScrollView>
-            <DrawerItem
-                label="Home"
-                onPress={() => props.navigation.navigate("Home")}
-            />
+        <DrawerContentScrollView {...props} >
+            <View
+                style={styles.container}
+            >
+                <View>
+                    <Image source={iconGerandoFalcoes} style={styles.iconGF} />
+                </View>
+                {buttons.map((button, index) => (
+                    <DrawerItem
+                        key={index}
+                        label={button.label}
+                        icon={() => <Image source={iconGerandoFalcoes} style={{width: 30, height: 30}} />}
+                        onPress={() => props.navigation.navigate(button.navigateTo)}
+                        style={styles.drawerItem}
+                        labelStyle={styles.drawerItemLabel}
+                    />
+                ))}
+            </View>
         </DrawerContentScrollView>
     );
 }
