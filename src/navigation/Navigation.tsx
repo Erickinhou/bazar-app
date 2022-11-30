@@ -56,10 +56,15 @@ const HeaderIcon = (props: HeaderIconProps) => (
 
 const SideMenu = () => {
   return (
-    <Drawer.Navigator>
-      <Drawer.Screen name="Home" component={Home} />
-      <Drawer.Screen name="Login" component={Login} />
-      <Drawer.Screen name="Register" component={Register} />
+    <Drawer.Navigator
+      initialRouteName="Dashboard"
+    >
+      <Drawer.Screen name="Perfil" component={Dashboard} />
+      <Drawer.Screen name="Meus pedidos" component={Dashboard} />
+      <Drawer.Screen name="Favoritos" component={Dashboard} />
+      <Drawer.Screen name="Entrega" component={Dashboard} />
+      <Drawer.Screen name="Pedidos" component={Dashboard} />
+      <Drawer.Screen name="Sair" component={Dashboard} />
     </Drawer.Navigator>
   );
 };
