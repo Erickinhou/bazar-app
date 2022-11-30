@@ -16,6 +16,8 @@ export interface RootStackParamList extends ParamListBase {
   Home: undefined;
   Login: undefined;
   Register: undefined;
+  ProfileMenu: undefined;
+  Profile: undefined;
   Dashboard: undefined;
 }
 

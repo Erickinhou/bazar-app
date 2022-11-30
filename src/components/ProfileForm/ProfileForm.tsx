@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Text, View } from "react-native";
 import { ScrollView, TextInput } from "react-native-gesture-handler";
 import Toast from "react-native-toast-message";
@@ -31,34 +31,32 @@ interface FormI {
   cpf: string;
 }
 
-export const RegisterForm: React.FC = () => {
-  const [form, setForm] = useState<FormI>({
-    password: "",
-    email: "",
-    cpf: "",
-    name: "",
-    phone: "",
-  });
+export const ProfileForm: React.FC = () => {
+  const [user, setUser] = useUser();
+  const [userForm, setUserForm] = useState<FormI>(user);
   const [disabled, setDisabled] = useState(false);
 
   const navigation = useNavigation<NavigationProps>();
 
-  const [_, setUser] = useUser();
-
   const handleSubmit = async () => {
     setDisabled(true);
     try {
-      const formattedForm = objMap(form, (value: string) =>
+      const formattedUser: FormI = objMap(userForm, (value: string) =>
         value.trim()
-      ) as FormI;
-      formattedForm.email = formattedForm.email.toLocaleLowerCase();
-      setForm(formattedForm);
+      );
+      formattedUser.email = formattedUser.email.toLocaleLowerCase();
+
+      if (!user?.id) return navigation.navigate("Login");
 
       //Todo: create a way to store this data to check if logged or not
-      const { data: user } = await api.post("/signUp", formattedForm);
+      const { data: updatedUser } = await api.put(
+        `/user/${user.id}`,
+        formattedUser
+      );
 
-      setUser(user);
+      setUser(updatedUser);
       navigation.navigate("Dashboard");
+
       Toast.show({
         type: "success",
         text1: "Registro concluido",
@@ -75,7 +73,7 @@ export const RegisterForm: React.FC = () => {
   };
 
   const addFormValue = ({ value, type }: InputDataChangeProps) => {
-    setForm((prev: any) => {
+    setUserForm((prev: any) => {
       return { ...prev, [type]: value };
     });
   };
@@ -86,14 +84,14 @@ export const RegisterForm: React.FC = () => {
       style={styles.container}
     >
       <Typography type="subtitle" style={styles.title}>
-        Crie uma nova conta
+        Perfil de Usuário
       </Typography>
       <View style={styles.containerInput}>
         <Label icon={accountIcon}>Nome</Label>
         <Input
           style={styles.textInput}
           placeholder="Augusto Nunes"
-          value={form.name}
+          value={userForm?.name}
           type="name"
           onChangeInput={addFormValue}
           setDisabled={setDisabled}
@@ -104,7 +102,7 @@ export const RegisterForm: React.FC = () => {
         <Input
           style={styles.textInput}
           placeholder="email@email.com"
-          value={form.email}
+          value={userForm?.email}
           type="email"
           validation={validateEmail}
           onChangeInput={addFormValue}
@@ -117,7 +115,7 @@ export const RegisterForm: React.FC = () => {
           style={styles.textInput}
           placeholder="Sua senha"
           secureTextEntry={true}
-          value={form.password}
+          value={userForm?.password}
           type={"password"}
           onChangeInput={addFormValue}
           setDisabled={setDisabled}
@@ -128,7 +126,7 @@ export const RegisterForm: React.FC = () => {
         <Input
           style={styles.textInput}
           placeholder="(38) 98834-2117"
-          value={form.phone}
+          value={userForm?.phone}
           type={"phone"}
           onChangeInput={addFormValue}
           validation={validatePhoneNumber}
@@ -140,7 +138,7 @@ export const RegisterForm: React.FC = () => {
         <Input
           style={styles.textInput}
           placeholder="123.123.123-12"
-          value={form.cpf}
+          value={userForm?.cpf}
           type="cpf"
           onChangeInput={addFormValue}
           validation={validateCpf}
@@ -150,7 +148,7 @@ export const RegisterForm: React.FC = () => {
       <View style={styles.buttonContainer}>
         <Button
           type="primary"
-          text="Criar"
+          text="Editar"
           onPressIn={handleSubmit}
           disabled={disabled}
         />

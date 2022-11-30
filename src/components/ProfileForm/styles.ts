@@ -6,6 +6,7 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 40,
     paddingVertical: 20,
     flex: 1,
+    backgroundColor: colorPalette.backgroundWhite,
   },
   containerInput: {
     marginBottom: 30,
@@ -16,6 +17,7 @@ export const styles = StyleSheet.create({
   },
   title: {
     marginBottom: 20,
+    textAlign: "center",
   },
   buttonContainer: {
     flex: 1,
