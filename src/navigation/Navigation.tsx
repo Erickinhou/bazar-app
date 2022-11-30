@@ -1,21 +1,24 @@
+import { Image } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { createDrawerNavigator } from "@react-navigation/drawer";
+import { createDrawerNavigator, DrawerContentScrollView, DrawerItem } from "@react-navigation/drawer";
+
+import { HeaderIconProps, RootStackParamList } from "./types";
 import { HamburgerButton } from "../components/HamburgerButton";
 import { SearchBar } from "../components/Search/SearchBar";
 import { SearchButton } from "../components/Search/SearchButton";
+import { DrawerContent } from "../components/DrawerContent";
 import { Dashboard } from "../screens/Dashboard";
 import { Home } from "../screens/Home";
 import { Login } from "../screens/Login";
 import { Register } from "../screens/Register";
 import { Search } from "../screens/Search";
 import { colorPalette } from "../theme/colors";
-import { HeaderIconProps, RootStackParamList } from "./types";
+
 import homeIcon from "../../assets/images/homeIcon.png";
 import buyIcon from "../../assets/images/buyIcon.png";
 import profileIcon from "../../assets/images/profileIcon.png";
-import { Image } from "react-native";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator();
@@ -88,17 +91,12 @@ const DashboardTabs = () => {
 export const DrawerMenu = () => {
   return (
     <Drawer.Navigator
-      initialRouteName="DashboardTabs"
       screenOptions={{
         headerShown: false,
       }}
+      drawerContent={(props) => <DrawerContent {...props} />}
     >
-      <Drawer.Screen name="Perfil" component={DashboardTabs} />
-      <Drawer.Screen name="Meus pedidos" component={DashboardTabs} />
-      <Drawer.Screen name="Favoritos" component={DashboardTabs} />
-      <Drawer.Screen name="Entrega" component={DashboardTabs} />
-      <Drawer.Screen name="Pedidos" component={DashboardTabs} />
-      <Drawer.Screen name="Sair" component={DashboardTabs} />
+      <Drawer.Screen name="DashboardTabs" component={DashboardTabs} />
     </Drawer.Navigator>
   );
 };
@@ -108,20 +106,6 @@ export const Navigation = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen
-          name="DrawerMenu"
-          component={DrawerMenu}
-          options={{
-            ...clearHeaderOptions,
-            headerLeft: () => <HamburgerButton />,
-            headerRight: () => <SearchButton />,
-          }}
-        />
-        <Stack.Screen
-          name="DashboardTabs"
-          component={DashboardTabs}
-          options={{ headerShown: false }}
-        />
         <Stack.Screen
           name="Home"
           component={Home}
@@ -139,6 +123,15 @@ export const Navigation = () => {
             title: "Registro de conta nova",
             headerStyle: { backgroundColor: colorPalette.primary },
             headerTintColor: colorPalette.backgroundWhite,
+          }}
+        />
+        <Stack.Screen
+          name="Dashboard"
+          component={DrawerMenu}
+          options={{
+            ...clearHeaderOptions,
+            headerLeft: () => <HamburgerButton />,
+            headerRight: () => <SearchButton />,
           }}
         />
         <Stack.Screen

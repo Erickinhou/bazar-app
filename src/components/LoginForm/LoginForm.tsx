@@ -31,7 +31,7 @@ export const LoginForm: React.FC = () => {
   };
 
   const navigateToDashboard = () => {
-    navigation.navigate("DashboardTabs");
+    navigation.navigate("Dashboard");
   };
 
   const handleLogin = async () => {
