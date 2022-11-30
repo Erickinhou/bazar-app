@@ -13,7 +13,6 @@ type Props = ScreenType<"Search">;
 export const Search: React.FC<Props> = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [search] = useSearch();
-  const [data, setData] = useState<Product[]>([]);
 
   useEffect(() => {
     async function getProducts(filterName: string) {
@@ -33,7 +32,7 @@ export const Search: React.FC<Props> = () => {
 
   return (
     <>
-      {data.length ? (
+      {products.length ? (
         <View style={styles.container}>
           <SearchProductList products={products} />
         </View>
