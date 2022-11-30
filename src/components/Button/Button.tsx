@@ -2,7 +2,7 @@ import { Pressable, PressableProps, Text, View } from "react-native";
 import { styles } from "./styles";
 
 interface Props extends PressableProps {
-  type?: "primary" | "secondary";
+  type?: "primary";
   text: string;
 }
 

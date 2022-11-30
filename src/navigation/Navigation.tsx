@@ -3,8 +3,12 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createDrawerNavigator, DrawerContentScrollView, DrawerItem } from "@react-navigation/drawer";
-
 import { HeaderIconProps, RootStackParamList } from "./types";
+import { colorPalette } from "../theme/colors";
+import homeIcon from "../../assets/images/homeIcon.png";
+import buyIcon from "../../assets/images/buyIcon.png";
+import profileIcon from "../../assets/images/profileIcon.png";
+
 import { HamburgerButton } from "../components/HamburgerButton";
 import { SearchBar } from "../components/Search/SearchBar";
 import { SearchButton } from "../components/Search/SearchButton";
@@ -13,12 +17,9 @@ import { Dashboard } from "../screens/Dashboard";
 import { Home } from "../screens/Home";
 import { Login } from "../screens/Login";
 import { Register } from "../screens/Register";
+import { ProfileMenu } from "../screens/ProfileMenu";
+import { Profile } from "../screens/Profile";
 import { Search } from "../screens/Search";
-import { colorPalette } from "../theme/colors";
-
-import homeIcon from "../../assets/images/homeIcon.png";
-import buyIcon from "../../assets/images/buyIcon.png";
-import profileIcon from "../../assets/images/profileIcon.png";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator();
@@ -36,7 +37,7 @@ const clearHeaderOptions = {
 const tabStyleOptions = {
   headerShown: false,
   tabBarActiveTintColor: colorPalette.primary,
-  tabBarInactiveTintColor: colorPalette.dark,
+  tabBarInactiveTintColor: colorPalette.mediumLight,
 
   tabBarStyle: {
     backgroundColor: colorPalette.backgroundWhite,
@@ -50,7 +51,9 @@ const HeaderIcon = (props: HeaderIconProps) => (
   <Image
     source={props.source}
     style={{
-      tintColor: props.focused ? colorPalette.primary : colorPalette.dark,
+      tintColor: props.focused
+        ? colorPalette.primary
+        : colorPalette.mediumLight,
       width: 24,
       height: 24,
     }}
@@ -70,7 +73,7 @@ const DashboardTabs = () => {
       />
       <Tab.Screen
         name="Profile"
-        component={Dashboard}
+        component={Profile}
         options={{
           ...tabStyleOptions,
           tabBarIcon: (props) => <HeaderIcon source={profileIcon} {...props} />,
@@ -126,8 +129,19 @@ export const Navigation = () => {
           }}
         />
         <Stack.Screen
-          name="Dashboard"
-          component={DrawerMenu}
+          name="ProfileMenu"
+          component={ProfileMenu}
+          options={{
+            headerShadowVisible: false,
+            title: "Meu Perfil",
+            headerStyle: {
+              backgroundColor: colorPalette.backgroundWhite,
+            },
+          }}
+        />
+        <Stack.Screen
+          name="DashboardTabs"
+          component={DashboardTabs}
           options={{
             ...clearHeaderOptions,
             headerLeft: () => <HamburgerButton />,

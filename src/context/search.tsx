@@ -4,11 +4,11 @@ const SearchContext = createContext<
   [string, React.Dispatch<React.SetStateAction<string>>] | undefined
 >(undefined);
 
-interface CounterProviderProps {
+interface SearcherProviderProps {
   children: React.ReactNode;
 }
 
-export const SearchProvider: React.FC<CounterProviderProps> = ({
+export const SearchProvider: React.FC<SearcherProviderProps> = ({
   children,
 }) => {
   const searchState = useState("");
@@ -22,7 +22,7 @@ export const SearchProvider: React.FC<CounterProviderProps> = ({
 export const useSearch = () => {
   const context = useContext(SearchContext);
   if (!context) {
-    throw new Error("useCount must be used within a CountProvider");
+    throw new Error("useSearch must be used within a SearchProvider");
   }
   return context;
 };

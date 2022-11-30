@@ -11,14 +11,12 @@ export const styles = StyleSheet.create({
   },
   noProductFoundText: {
     color: "black",
-    fontSize: 28,
     fontWeight: "bold",
     textAlign: "center",
     marginBottom: 10,
   },
   noProductText: {
     color: "black",
-    fontSize: 17,
     fontStyle: "normal",
     textAlign: "center",
   },
