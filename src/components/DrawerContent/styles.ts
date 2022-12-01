@@ -10,8 +10,8 @@ export const styles = StyleSheet.create({
     height: 150,
   },
   iconDrawerItem: {
-    width: 30,
-    height: 30,
+    width: 20,
+    height: 20,
     resizeMode: "contain",
   },
   drawerItem: {

@@ -1,17 +1,16 @@
 import { DrawerActions, useNavigation } from "@react-navigation/native";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { Image, TouchableOpacity, TouchableOpacityProps } from "react-native";
 
+import { NavigationProps } from "../../navigation/types";
 import hamburgerIcon from "../../../assets/images/hamburgerIcon.png";
-import { RootStackParamList } from "../../navigation/types";
 
 import { styles } from "./styles";
 
-interface Props extends TouchableOpacityProps {}
+interface Props extends TouchableOpacityProps { }
 
-export const HamburgerButton: React.FC<Props> = ({ ...props }) => {
+export const HamburgerButton: React.FC<Props> = () => {
 
-  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const navigation = useNavigation<NavigationProps>();
 
   const handleOpenDrawer = () => {
     navigation.dispatch(DrawerActions.toggleDrawer());

@@ -6,7 +6,7 @@ import settingsIconWhite from "../../../assets/images/settingsIconWhite.png";
 import logoutIconWhite from "../../../assets/images/logoutIconWhite.png";
 
 
-export const buttons = [
+export const BUTTONS = [
     {
         label: "Perfil",
         icon: profileIconWhite,
