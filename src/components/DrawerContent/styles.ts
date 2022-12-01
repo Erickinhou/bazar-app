@@ -9,6 +9,11 @@ export const styles = StyleSheet.create({
     width: 150,
     height: 150,
   },
+  iconDrawerItem: {
+    width: 30,
+    height: 30,
+    resizeMode: "contain",
+  },
   drawerItem: {
     borderBottomWidth: 1,
     borderBottomColor: colorPalette.white,

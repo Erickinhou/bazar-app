@@ -109,23 +109,14 @@ const StackScreen = (props: T) => {
   const animatedStyles = { borderRadius, transform: [{ scale }] };
 
   return (
-    <Animated.View 
+    <Animated.View
       style={[
-        { flex: 1 }, 
+        { flex: 1 },
         isDrawer ? { borderWidth: 15, borderColor: colorPalette.backgroundWhite } : null,
         animatedStyles
       ]}
     >
       <Stack.Navigator>
-        <Stack.Screen
-          name="DashboardTabs"
-          component={DashboardTabs}
-          options={{
-            ...clearHeaderOptions,
-            headerLeft: () => <HamburgerButton />,
-            headerRight: () => <SearchButton />,
-          }}
-        />
         <Stack.Screen
           name="Home"
           component={Home}
@@ -143,6 +134,15 @@ const StackScreen = (props: T) => {
             title: "Registro de conta nova",
             headerStyle: { backgroundColor: colorPalette.primary },
             headerTintColor: colorPalette.backgroundWhite,
+          }}
+        />
+        <Stack.Screen
+          name="DashboardTabs"
+          component={DashboardTabs}
+          options={{
+            ...clearHeaderOptions,
+            headerLeft: () => <HamburgerButton />,
+            headerRight: () => <SearchButton />,
           }}
         />
         <Stack.Screen
@@ -195,7 +195,6 @@ const DrawerMenu = () => {
       drawerContent={(props: T) => {
         return <DrawerContent {...props} />
       }}
-
     >
       <Drawer.Screen name="Screens">
         {props => <StackScreen {...props} />}

@@ -19,7 +19,7 @@ export const DrawerContent: React.FC = (props: T) => {
                     <DrawerItem
                         key={index}
                         label={button.label}
-                        icon={() => <Image source={iconGerandoFalcoes} style={{width: 30, height: 30}} />}
+                        icon={() => <Image source={button.icon} style={styles.iconDrawerItem} />}
                         onPress={() => props.navigation.navigate(button.navigateTo)}
                         style={styles.drawerItem}
                         labelStyle={styles.drawerItemLabel}
