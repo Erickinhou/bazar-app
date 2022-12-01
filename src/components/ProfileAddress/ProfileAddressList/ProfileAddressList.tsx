@@ -12,13 +12,9 @@ interface Props {
 export const ProfileAddressList: React.FC<Props> = ({ addresses }) => {
     return (
         <View style={styles.container}>
-            <FlatList
-                data={addresses}
-                keyExtractor={(item) => String(item.id)}
-                renderItem={({ item, index }) => 
-                    <ProfileAddressCard address={item} index={index} />
-                }
-            />
+            {addresses?.map((address, index) => (
+                <ProfileAddressCard key={address.id} index={index} address={address} />
+            ))}
         </View>
     );
 };
