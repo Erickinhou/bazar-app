@@ -8,11 +8,11 @@ type Props = ScreenType<"ProfileMenu">;
 const menu = [
   {
     title: "Editar Perfil",
-    navigateTo: "Login",
+    navigateTo: "Profile",
   },
   {
     title: "Endereço",
-    navigateTo: "Login",
+    navigateTo: "ProfileAddress",
   },
   {
     title: "Pedidos",
