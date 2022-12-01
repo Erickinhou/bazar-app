@@ -15,7 +15,9 @@ export const ProfileAddressList: React.FC<Props> = ({ addresses }) => {
             <FlatList
                 data={addresses}
                 keyExtractor={(item) => String(item.id)}
-                renderItem={({ item }) => <ProfileAddressCard address={item} />}
+                renderItem={({ item, index }) => 
+                    <ProfileAddressCard address={item} index={index} />
+                }
             />
         </View>
     );

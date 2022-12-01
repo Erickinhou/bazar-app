@@ -6,7 +6,7 @@ import { useUser } from "../../context/user";
 import { ScreenType } from "../../navigation/types";
 
 import { styles } from "./styles";
-import { ProfileAddressList } from "../../components/ProfileAddres/ProfileAddressList";
+import { ProfileAddressList } from "../../components/ProfileAddress/ProfileAddressList";
 
 type Props = ScreenType<"ProfileAddres">;
 
