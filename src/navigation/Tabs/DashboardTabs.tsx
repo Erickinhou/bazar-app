@@ -9,7 +9,7 @@ import buyIcon from "../../../assets/images/buyIcon.png";
 import profileIcon from "../../../assets/images/profileIcon.png";
 
 import { colorPalette } from "../../theme/colors";
-import { tabStyleOptions } from "../styles";
+import { tabStyleOptions } from "./styles";
 import { HeaderIconProps } from "../types";
 
 const Tab = createBottomTabNavigator();
@@ -27,7 +27,7 @@ const HeaderIcon = (props: HeaderIconProps) => (
   />
 );
 
-export const DashboardTabs = (props: T) => {
+export const DashboardTabs = () => {
   return (
     <Tab.Navigator>
       <Tab.Screen

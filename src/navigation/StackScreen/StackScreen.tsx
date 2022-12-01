@@ -13,7 +13,7 @@ import { SearchButton } from "../../components/Search/SearchButton";
 import { DashboardTabs } from "../Tabs";
 import { RootStackParamList } from "../types";
 import { colorPalette } from "../../theme/colors";
-import { clearHeaderOptions } from "../styles";
+import { clearHeaderOptions } from "./styles";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 

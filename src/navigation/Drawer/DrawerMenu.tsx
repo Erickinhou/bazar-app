@@ -1,6 +1,6 @@
 import { createDrawerNavigator } from "@react-navigation/drawer";
 
-import { drawerStyleOptions } from "../../navigation/styles";
+import { drawerStyleOptions } from "./styles";
 import { DrawerContent } from "../../components/DrawerContent";
 
 import { AnimatedDrawerView } from "../AnimatedDrawerView";
