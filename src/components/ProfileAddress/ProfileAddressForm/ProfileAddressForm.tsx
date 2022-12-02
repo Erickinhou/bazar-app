@@ -74,8 +74,15 @@ export const ProfileAddressForm: React.FC<Props> = ({ route }) => {
         setDisabled(true);
         try {
             addrForm.number = Number(addrForm.number);
-            let addrFormCopy = { ...addrForm, id: address.id };
+            let addrFormCopy = { ...addrForm };
             delete addrFormCopy.user;
+            await api.put(`/address/${address.id}`, addrFormCopy);
+            navigation.navigate("ProfileMenu");
+            Toast.show({
+                type: "success",
+                text1: "Registro concluido",
+                text2: "Dados de endereço atualizados com sucesso",
+            });
         } catch (err) {
             Toast.show({
                 type: "error",
