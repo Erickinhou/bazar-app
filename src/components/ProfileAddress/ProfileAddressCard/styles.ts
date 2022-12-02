@@ -15,10 +15,10 @@ export const styles = StyleSheet.create({
         marginHorizontal: 20,
     },
     infoContainer: {
-        flex: 1,
+        flex: 3,
     },
     buttonsContainer: {
-        flex: 0,
+        flex: 1,
         flexDirection: "column-reverse",
         alignItems: "center",
     },

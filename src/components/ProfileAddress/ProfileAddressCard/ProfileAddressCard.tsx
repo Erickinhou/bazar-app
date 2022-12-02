@@ -1,4 +1,5 @@
 import { View } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 import { Button } from "../../Button";
 import { Typography } from "../../Typography";
@@ -6,6 +7,9 @@ import { Typography } from "../../Typography";
 import { Address } from "../../../screens/ProfileAddress";
 
 import { styles } from "./styles";
+import { NavigationProps } from "../../../navigation/types";
+import Toast from "react-native-toast-message";
+import { api } from "../../../service";
 
 interface Props {
     index: number;
@@ -13,6 +17,25 @@ interface Props {
 }
 
 export const ProfileAddressCard: React.FC<Props> = ({ index, address }) => {
+
+    const navigation = useNavigation<NavigationProps>();
+    const removeAddress = async () => {
+        try {
+            await api.delete(`/address/${address.id}`);
+            navigation.navigate("ProfileMenu");
+            Toast.show({
+                type: "success",
+                text1: "Registro concluido",
+                text2: "Endereço removido com sucesso",
+            });
+        } catch (err) {
+            Toast.show({
+                type: "error",
+                text1: "Falhou",
+            });
+        }
+    };
+
     return (
         <View style={styles.container}>
             <View style={styles.infoContainer}>
@@ -34,8 +57,8 @@ export const ProfileAddressCard: React.FC<Props> = ({ index, address }) => {
                 </Typography>
             </View>
             <View style={styles.buttonsContainer}>
-                <View style={{ height: 40, width: 90 }}>
-                    <Button text={"Editar"} />
+                <View style={{ height: 40, width: 140}}>
+                    <Button text={"Remover"} onPress={removeAddress}/>
                 </View>
             </View>
         </View>

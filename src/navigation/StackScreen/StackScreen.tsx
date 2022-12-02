@@ -5,6 +5,7 @@ import { Login } from "../../screens/Login";
 import { Register } from "../../screens/Register";
 import { Profile } from "../../screens/Profile";
 import { ProfileAddress } from "../../screens/ProfileAddress";
+import { ProfileAddressForm } from "../../components/ProfileAddress/ProfileAddressForm";
 import { ProfileMenu } from "../../screens/ProfileMenu";
 import { Search } from "../../screens/Search";
 
@@ -71,9 +72,21 @@ export const StackScreen = () => {
             backgroundColor: colorPalette.backgroundWhite,
           },
         }}
-      /><Stack.Screen
+      />
+      <Stack.Screen
         name="ProfileAddress"
         component={ProfileAddress}
+        options={{
+          headerShadowVisible: false,
+          title: "Meus Endereços",
+          headerStyle: {
+            backgroundColor: colorPalette.backgroundWhite,
+          },
+        }}
+      />
+      <Stack.Screen
+        name="ProfileAddressForm"
+        component={ProfileAddressForm}
         options={{
           headerShadowVisible: false,
           title: "Meus Endereços",

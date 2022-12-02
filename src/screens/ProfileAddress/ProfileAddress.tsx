@@ -19,7 +19,7 @@ export interface Address {
   complement: string;
 }
 
-export const ProfileAddress: React.FC<Props> = () => {
+export const ProfileAddress: React.FC<Props> = ({ route }) => {
 
   const [user] = useUser();
   const [addresses, setAddresses] = React.useState<Address[]>();
