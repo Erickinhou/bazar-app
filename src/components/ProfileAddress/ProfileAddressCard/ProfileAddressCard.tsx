@@ -19,6 +19,7 @@ interface Props {
 export const ProfileAddressCard: React.FC<Props> = ({ index, address }) => {
 
     const navigation = useNavigation<NavigationProps>();
+
     const removeAddress = async () => {
         try {
             await api.delete(`/address/${address.id}`);
@@ -34,6 +35,10 @@ export const ProfileAddressCard: React.FC<Props> = ({ index, address }) => {
                 text1: "Falhou",
             });
         }
+    };
+
+    const editAddress = () => {
+        navigation.navigate("ProfileAddressForm", { address: address });
     };
 
     return (
@@ -57,8 +62,11 @@ export const ProfileAddressCard: React.FC<Props> = ({ index, address }) => {
                 </Typography>
             </View>
             <View style={styles.buttonsContainer}>
-                <View style={{ height: 40, width: 140}}>
+                <View style={styles.button}>
                     <Button text={"Remover"} onPress={removeAddress}/>
+                </View>
+                <View style={styles.button}>
+                    <Button text={"Editar"} onPress={editAddress}/>
                 </View>
             </View>
         </View>

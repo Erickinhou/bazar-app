@@ -1,15 +1,16 @@
 import React from "react";
+import Toast from "react-native-toast-message";
 import { SafeAreaView, View } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
-import { Input, InputDataChangeProps } from "../../Input";
-import { Button } from "../../Button";
+import { Address } from "../../../screens/ProfileAddress";
 
+import { api } from "../../../service";
 import { styles } from "./styles";
 import { Label } from "../../Label";
-import Toast from "react-native-toast-message";
-import { useNavigation } from "@react-navigation/native";
+import { Button } from "../../Button";
+import { Input, InputDataChangeProps } from "../../Input";
 import { NavigationProps } from "../../../navigation/types";
-import { api } from "../../../service";
 import { useUser } from "../../../context/user";
 
 interface FormI {
@@ -23,14 +24,24 @@ interface FormI {
     };
 }
 
-export const ProfileAddressForm: React.FC = () => {
+interface Props {
+    route: {
+        params: {
+            address: Address;
+        };
+    };
+}
+
+export const ProfileAddressForm: React.FC<Props> = ({ route }) => {
+
+    const { address } = route.params || {};
     const [user] = useUser()
     const [addrForm, setAddrForm] = React.useState<FormI>({
-        street: "",
-        number: 0,
-        district: "",
-        complement: "",
-        cep: "",
+        street: address ? address.street : "",
+        number: address ? address.number : 0,
+        district: address ? address.district : "",
+        complement: address ? address.complement : "",
+        cep: address ? address.cep : "",
         user: {
             id: user.id
         }
@@ -38,7 +49,7 @@ export const ProfileAddressForm: React.FC = () => {
     const [disabled, setDisabled] = React.useState(false);
     const navigation = useNavigation<NavigationProps>();
 
-    const handleSubmit = async () => {
+    const handleAddSubmit = async () => {
         setDisabled(true);
         try {
             addrForm.number = Number(addrForm.number);
@@ -49,6 +60,22 @@ export const ProfileAddressForm: React.FC = () => {
                 text1: "Registro concluido",
                 text2: "Dados de endereço cadastrados com sucesso",
             });
+        } catch (err) {
+            Toast.show({
+                type: "error",
+                text1: "Falhou",
+                text2: err?.response.data.message ?? "Dados de endereço invalidos",
+            });
+        }
+        setDisabled(false);
+    };
+
+    const handleEditSubmit = async () => {
+        setDisabled(true);
+        try {
+            addrForm.number = Number(addrForm.number);
+            let addrFormCopy = { ...addrForm, id: address.id };
+            delete addrFormCopy.user;
         } catch (err) {
             Toast.show({
                 type: "error",
@@ -118,12 +145,21 @@ export const ProfileAddressForm: React.FC = () => {
                 />
             </View>
             <View style={styles.buttonContainer}>
-                <Button
-                    type="primary"
-                    text="Adicionar"
-                    onPressIn={handleSubmit}
-                    disabled={disabled}
-                />
+                {address ? (
+                    <Button
+                        type="primary"
+                        text="Editar"
+                        onPressIn={handleEditSubmit}
+                        disabled={disabled}
+                    />
+                ) : (
+                    <Button
+                        type="primary"
+                        text="Adicionar"
+                        onPressIn={handleAddSubmit}
+                        disabled={disabled}
+                    />
+                )}
             </View>
         </SafeAreaView>
     );
