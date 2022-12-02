@@ -4,7 +4,7 @@ import { colorPalette } from "../../../theme/colors";
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
-        maxHeight: "20%",
+        minHeight: "10%",
         flexDirection: "row",
         backgroundColor: colorPalette.white,
         borderWidth: 1,

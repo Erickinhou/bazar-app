@@ -1,5 +1,6 @@
 import React from "react";
 import { View } from "react-native";
+import { ScrollView } from "react-native-gesture-handler";
 import { useNavigation } from "@react-navigation/native";
 
 import { Address } from "../../../screens/ProfileAddress";
@@ -24,12 +25,12 @@ export const ProfileAddressList: React.FC<Props> = ({ addresses }) => {
 
     return (
         <View style={styles.container}>
-            <View style={styles.addressContainer}>
+            <ScrollView style={styles.addressCardContainer}>
                 {addresses?.map((address, index) => (
                     <ProfileAddressCard key={address.id} index={index} address={address} />
                 ))}
-            </View>
-            <View>
+            </ScrollView>
+            <View style={styles.buttonContainer}>
                 <Button
                     type="primary"
                     text="Adicionar novo endereco"
