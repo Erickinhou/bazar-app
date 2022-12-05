@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { Image, ScrollView, Text, View } from "react-native";
 import Toast from "react-native-toast-message";
 import { api } from "../../service";
-import { colorPalette } from "../../theme/colors";
 import { TextLink } from "../TextLink";
 import { CategoryOptions } from "./CategoryOptions";
 import { ProductCard } from "./ProductCard";

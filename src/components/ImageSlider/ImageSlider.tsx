@@ -57,7 +57,7 @@ export const ImageSlider: React.FC<Props> = ({ images }) => {
       />
       <View style={styles.indicatorContainer}>
         {images?.map((_, index) => (
-          <Indicator isActive={index === visibleItemIndex} />
+          <Indicator key={index.toString()} isActive={index === visibleItemIndex} />
         ))}
       </View>
     </View>
