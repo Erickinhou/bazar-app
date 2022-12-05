@@ -14,59 +14,71 @@ import { DashboardTabs } from "../Tabs";
 import { RootStackParamList } from "../types";
 import { colorPalette } from "../../theme/colors";
 import { clearHeaderOptions } from "./styles";
+import { Product } from "../../screens/Product";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export const StackScreen = () => {
   return (
-      <Stack.Navigator>
-        <Stack.Screen
-          name="Home"
-          component={Home}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Login"
-          component={Login}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Register"
-          component={Register}
-          options={{
-            title: "Registro de conta nova",
-            headerStyle: { backgroundColor: colorPalette.primary },
-            headerTintColor: colorPalette.backgroundWhite,
-          }}
-        />
-        <Stack.Screen
-          name="DashboardTabs"
-          component={DashboardTabs}
-          options={{
-            ...clearHeaderOptions,
-            headerLeft: () => <HamburgerButton />,
-            headerRight: () => <SearchButton />,
-          }}
-        />
-        <Stack.Screen
-          name="ProfileMenu"
-          component={ProfileMenu}
-          options={{
-            headerShadowVisible: false,
-            title: "Meu Perfil",
-            headerStyle: {
-              backgroundColor: colorPalette.backgroundWhite,
-            },
-          }}
-        />
-        <Stack.Screen
-          name="Search"
-          component={Search}
-          options={{
-            ...clearHeaderOptions,
-            headerTitle: () => <SearchBar />,
-          }}
-        />
-      </Stack.Navigator>
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Home"
+        component={Home}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Login"
+        component={Login}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Register"
+        component={Register}
+        options={{
+          title: "Registro de conta nova",
+          headerStyle: { backgroundColor: colorPalette.primary },
+          headerTintColor: colorPalette.backgroundWhite,
+        }}
+      />
+      <Stack.Screen
+        name="DashboardTabs"
+        component={DashboardTabs}
+        options={{
+          ...clearHeaderOptions,
+          headerLeft: () => <HamburgerButton />,
+          headerRight: () => <SearchButton />,
+        }}
+      />
+      <Stack.Screen
+        name="ProfileMenu"
+        component={ProfileMenu}
+        options={{
+          headerShadowVisible: false,
+          title: "Meu Perfil",
+          headerStyle: {
+            backgroundColor: colorPalette.backgroundWhite,
+          },
+        }}
+      />
+      <Stack.Screen
+        name="Search"
+        component={Search}
+        options={{
+          ...clearHeaderOptions,
+          headerTitle: () => <SearchBar />,
+        }}
+      />
+      <Stack.Screen
+        name="Product"
+        component={Product}
+        options={{
+          headerTitle: "",
+          headerShadowVisible: false,
+          headerStyle: {
+            backgroundColor: colorPalette.backgroundWhite,
+          },
+        }}
+      />
+    </Stack.Navigator>
   );
 };

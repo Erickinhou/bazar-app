@@ -1,24 +1,27 @@
 import { Image, TouchableOpacity, View } from "react-native";
 import { Typography } from "../../Typography";
-import { Product } from "../ProductSlide";
+import { ProductI } from "../ProductSlide";
 import { ProductCardHOC } from "../../../hoc/ProductsCardStyle";
+import { useNavigation } from "@react-navigation/native";
+import { NavigationProps } from "../../../navigation/types";
 
 interface Props {
-  product: Product,
+  product: ProductI;
   style?: {
-    productCardContainer: object,
-    thumbnail: object,
-    productTitle: object,
-    productDescription: object,
-    productPrice: object,
-  }
+    productCardContainer: object;
+    thumbnail: object;
+    productTitle: object;
+    productDescription: object;
+    productPrice: object;
+  };
 }
 
 const ProductCardComponent: React.FC<Props> = ({ product, style }) => {
+  const navigation = useNavigation<NavigationProps>();
 
   const handleButtonClick = () => {
-    console.log(product.title)
-  }
+    navigation.navigate("Product", { product });
+  };
 
   return (
     <TouchableOpacity onPress={() => handleButtonClick()}>
@@ -44,4 +47,3 @@ const ProductCardComponent: React.FC<Props> = ({ product, style }) => {
 };
 
 export const ProductCard = ProductCardHOC(ProductCardComponent);
-

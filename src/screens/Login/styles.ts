@@ -9,7 +9,6 @@ export const styles = StyleSheet.create({
   formContainer: {
     flex: 2,
     borderTopStartRadius: 20,
-    borderRadiusTop: 20,
     borderTopEndRadius: 20,
     backgroundColor: colorPalette.backgroundWhite,
   },

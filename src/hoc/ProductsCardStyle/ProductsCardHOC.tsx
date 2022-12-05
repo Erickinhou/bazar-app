@@ -1,7 +1,6 @@
 import React from "react";
-import { Product } from "../../components/ProductSlide";
+import { ProductI } from "../../components/ProductSlide";
 import { styles } from "./styles";
-
 
 const treatStyles = (props: T) => {
   if (props?.search) {
@@ -9,12 +8,12 @@ const treatStyles = (props: T) => {
     if (props?.index % 2 === 0) {
       newStyles.productCardContainer = {
         ...newStyles.productCardContainer,
-        marginTop: 10
+        marginTop: 10,
       };
     } else {
       newStyles.productCardContainer = {
         ...newStyles.productCardContainer,
-        marginTop: 40
+        marginTop: 40,
       };
     }
     return newStyles;
@@ -23,7 +22,7 @@ const treatStyles = (props: T) => {
 };
 
 interface Props {
-  product: Product;
+  product: ProductI;
   search?: boolean;
   index?: number;
 }
