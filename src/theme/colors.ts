@@ -8,6 +8,7 @@ export interface ColorPalette {
   white: string;
   dark: string;
   black: string;
+  transparent: string;
 }
 
 export const colorPalette: ColorPalette = {
@@ -20,4 +21,5 @@ export const colorPalette: ColorPalette = {
   white: "#fff",
   dark: "#27272a",
   black: "#000",
+  transparent: "rgba(0, 0, 0, 0)",
 };

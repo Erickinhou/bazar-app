@@ -1,11 +1,11 @@
 import { FlatList, Image, View } from "react-native";
 import { Typography } from "../../Typography";
 import { styles } from "./styles";
-import { Product } from "../../ProductSlide";
+import { ProductI } from "../../ProductSlide";
 import { ProductCard } from "../../ProductSlide/ProductCard";
 
 interface Props {
-  products: Product[];
+  products: ProductI[];
 }
 
 export const SearchProductList: React.FC<Props> = ({ products }) => {

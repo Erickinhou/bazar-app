@@ -4,6 +4,7 @@ import {
   NativeStackScreenProps,
 } from "@react-navigation/native-stack";
 import { ImageSourcePropType } from "react-native";
+import { ProductI } from "../components/ProductSlide";
 
 export interface HeaderIconProps {
   focused: boolean;
@@ -20,6 +21,7 @@ export interface RootStackParamList extends ParamListBase {
   ProfileMenu: undefined;
   Profile: undefined;
   Dashboard: undefined;
+  Product: { product: ProductI };
 }
 
 export interface NavigationProps

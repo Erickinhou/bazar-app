@@ -17,6 +17,7 @@ import { DashboardTabs } from "../Tabs";
 import { RootStackParamList } from "../types";
 import { colorPalette } from "../../theme/colors";
 import { clearHeaderOptions } from "./styles";
+import { Product } from "../../screens/Product";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -57,6 +58,17 @@ export const StackScreen = () => {
         options={{
           headerShadowVisible: false,
           title: "Meu Perfil",
+          headerStyle: {
+            backgroundColor: colorPalette.backgroundWhite,
+          },
+        }}
+      />
+      <Stack.Screen
+        name="Product"
+        component={Product}
+        options={{
+          headerTitle: "",
+          headerShadowVisible: false,
           headerStyle: {
             backgroundColor: colorPalette.backgroundWhite,
           },

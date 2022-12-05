@@ -3,7 +3,7 @@ import { View } from "react-native";
 import { useSearch } from "../../context/search";
 import { ScreenType } from "../../navigation/types";
 import { styles } from "./styles";
-import { Product } from "../../components/ProductSlide";
+import { ProductI } from "../../components/ProductSlide";
 import { api } from "../../service";
 import { NoProductFound } from "../../components/NoProductFound";
 import { SearchProductList } from "../../components/Search/SearchProductList";
@@ -11,7 +11,7 @@ import { SearchProductList } from "../../components/Search/SearchProductList";
 type Props = ScreenType<"Search">;
 
 export const Search: React.FC<Props> = () => {
-  const [products, setProducts] = useState<Product[]>([]);
+  const [products, setProducts] = useState<ProductI[]>([]);
   const [search] = useSearch();
 
   useEffect(() => {

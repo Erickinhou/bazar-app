@@ -1,5 +1,5 @@
 import React from "react";
-import { Product } from "../../components/ProductSlide";
+import { ProductI } from "../../components/ProductSlide";
 import { styles } from "./styles";
 
 const treatStyles = (props: Props) => {
@@ -24,7 +24,7 @@ const treatStyles = (props: Props) => {
 };
 
 interface Props {
-  product: Product;
+  product: ProductI;
   search?: boolean;
   index?: number;
   style?: any;
