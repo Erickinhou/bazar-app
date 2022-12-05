@@ -1,6 +1,7 @@
+import { DrawerNavigationOptions } from "@react-navigation/drawer";
 import { colorPalette } from "../../theme/colors";
 
-export const drawerStyleOptions = {
+export const drawerStyleOptions: DrawerNavigationOptions = {
   headerShown: false,
   swipeEnabled: false,
   drawerType: "slide",
