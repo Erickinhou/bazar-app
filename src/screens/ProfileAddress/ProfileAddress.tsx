@@ -11,7 +11,7 @@ import { ProfileAddressList } from "../../components/ProfileAddress/ProfileAddre
 type Props = ScreenType<"ProfileAddres">;
 
 export interface Address {
-  id: number;
+  id: string;
   street: string;
   number: number;
   district: string;
@@ -20,7 +20,6 @@ export interface Address {
 }
 
 export const ProfileAddress: React.FC<Props> = ({ route }) => {
-
   const [user] = useUser();
   const [addresses, setAddresses] = React.useState<Address[]>();
 
@@ -40,7 +39,7 @@ export const ProfileAddress: React.FC<Props> = ({ route }) => {
 
   return (
     <View style={styles.container}>
-      <ProfileAddressList addresses={addresses}/>
+      <ProfileAddressList addresses={addresses} />
     </View>
   );
 };
