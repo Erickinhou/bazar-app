@@ -5,6 +5,8 @@ import { styles } from "./styles";
 import { Typography } from "../../Typography";
 import { CartProduct } from '../CartProductList';
 
+import deleteIcon from "../../../../assets/images/deleteIcon.png";
+
 interface Props {
     index: number;
     products: CartProduct;
@@ -35,14 +37,19 @@ export const CartProductCard: React.FC<Props> = ({ index, products, handleAmount
             <View style={styles.infoContainer}>
                 <Typography type="paragraph" style={styles.title}> {title} </Typography>
                 <Typography type="paragraph" style={styles.price}> R${price} </Typography>
-                <View style={styles.amountContainer}>
-                    <Typography type="paragraph"> Quantidade:  </Typography>
-                    <TouchableOpacity style={styles.amountButton} onPress={handleMinus}>
-                        <Typography type="paragraph" style={styles.amountButtonText}> {"-"} </Typography>
-                    </TouchableOpacity>
-                    <Typography type="paragraph"> {amountState} </Typography>
-                    <TouchableOpacity style={styles.amountButton} onPress={handlePlus}>
-                        <Typography type="paragraph" style={styles.amountButtonText}> {"+"} </Typography>
+                <View style={[{justifyContent:"space-between"}, styles.amountContainer]}>
+                    <View style={styles.amountContainer}>
+                        <Typography type="paragraph"> Quantidade:  </Typography>
+                        <TouchableOpacity style={styles.amountButton} onPress={handleMinus}>
+                            <Typography type="paragraph" style={styles.amountButtonText}> {"-"} </Typography>
+                        </TouchableOpacity>
+                        <Typography type="paragraph"> {amountState} </Typography>
+                        <TouchableOpacity style={styles.amountButton} onPress={handlePlus}>
+                            <Typography type="paragraph" style={styles.amountButtonText}> {"+"} </Typography>
+                        </TouchableOpacity>
+                    </View>
+                    <TouchableOpacity>
+                        <Image source={deleteIcon} style={styles.deleteIcon} />
                     </TouchableOpacity>
                 </View>
             </View>

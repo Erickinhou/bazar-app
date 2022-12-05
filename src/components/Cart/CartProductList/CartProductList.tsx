@@ -1,6 +1,4 @@
-import { useEffect } from "react";
 import { FlatList, View } from "react-native";
-import { State } from "react-native-gesture-handler";
 import { ProductI } from "../../ProductSlide";
 import { CartProductCard } from "../CartProductCard";
 import { styles } from "./styles";

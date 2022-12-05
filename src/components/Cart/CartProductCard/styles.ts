@@ -57,4 +57,9 @@ export const styles = StyleSheet.create({
         color: colorPalette.white,
         alignSelf: "center",
     },
+    deleteIcon: {
+        width: 24,
+        height: 24,
+        resizeMode: "contain",
+    },
 });
