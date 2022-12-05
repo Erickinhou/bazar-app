@@ -1,16 +1,16 @@
-import { Image } from "react-native";
+import { Image, Text } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-import { Profile } from "../../screens/Profile";
 import { Dashboard } from "../../screens/Dashboard";
+import { Cart } from "../../screens/Cart";
 
 import homeIcon from "../../../assets/images/homeIcon.png";
 import buyIcon from "../../../assets/images/buyIcon.png";
-import profileIcon from "../../../assets/images/profileIcon.png";
 
 import { colorPalette } from "../../theme/colors";
 import { tabStyleOptions } from "./styles";
 import { HeaderIconProps } from "../types";
+import { clearHeaderOptions } from "../StackScreen/styles";
 
 const Tab = createBottomTabNavigator();
 
@@ -40,7 +40,7 @@ export const DashboardTabs = () => {
       />
       <Tab.Screen
         name="Cart"
-        component={Dashboard}
+        component={Cart}
         options={{
           ...tabStyleOptions,
           tabBarIcon: (props) => <HeaderIcon source={buyIcon} {...props} />,
