@@ -43,7 +43,9 @@ export const styles = {
       backgroundColor: colorPalette.white,
       borderRadius: 20,
       padding: 10,
-      marginRight: 20,
+      marginTop: 0,
+      marginRight: 0,
+      marginLeft: 0,
       shadowColor: colorPalette.dark,
     },
     thumbnail: {

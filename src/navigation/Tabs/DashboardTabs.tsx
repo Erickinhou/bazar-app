@@ -39,14 +39,6 @@ export const DashboardTabs = () => {
         }}
       />
       <Tab.Screen
-        name="Profile"
-        component={Profile}
-        options={{
-          ...tabStyleOptions,
-          tabBarIcon: (props) => <HeaderIcon source={profileIcon} {...props} />,
-        }}
-      />
-      <Tab.Screen
         name="Cart"
         component={Dashboard}
         options={{

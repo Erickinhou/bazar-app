@@ -2,18 +2,20 @@ import React from "react";
 import { ProductI } from "../../components/ProductSlide";
 import { styles } from "./styles";
 
-const treatStyles = (props: T) => {
+const treatStyles = (props: Props) => {
   if (props?.search) {
     let newStyles = { ...styles.search };
     if (props?.index % 2 === 0) {
       newStyles.productCardContainer = {
         ...newStyles.productCardContainer,
         marginTop: 10,
+        marginRight: 10,
       };
     } else {
       newStyles.productCardContainer = {
         ...newStyles.productCardContainer,
         marginTop: 40,
+        marginLeft: 10,
       };
     }
     return newStyles;
@@ -25,6 +27,7 @@ interface Props {
   product: ProductI;
   search?: boolean;
   index?: number;
+  style?: any;
 }
 
 export function ProductCardHOC(WrappedComponent: React.FC<Props>) {
