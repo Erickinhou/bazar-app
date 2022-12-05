@@ -4,7 +4,7 @@ import { colorPalette } from "../../../theme/colors";
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
-        maxHeight: "15%",
+        minHeight: "10%",
         flexDirection: "row",
         backgroundColor: colorPalette.white,
         borderWidth: 1,
@@ -19,8 +19,11 @@ export const styles = StyleSheet.create({
     },
     buttonsContainer: {
         flex: 1,
-        flexDirection: "column-reverse",
         alignItems: "center",
+    },
+    button: {
+        width: 140,
+        marginVertical: 5,
     },
     addressTitle: {
         fontWeight: "bold",

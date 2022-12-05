@@ -5,12 +5,14 @@ export const styles = StyleSheet.create({
     container: {
         flex: 1,
     },
-    addressContainer: {
+    addressCardContainer: {
         width: "100%",
         height: "90%",
     },
     buttonContainer: {
         width: "100%",
-        height: "5%",
+        height: "10%",
+        justifyContent: "center",
+        alignItems: "center",
     },
 });    
