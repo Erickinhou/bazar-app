@@ -46,7 +46,6 @@ export const Cart = () => {
     };
 
     const handleProceedToOrder = () => {
-        console.log("Checkout")
         navigation.navigate("Order");
     }
 
