@@ -1,17 +1,23 @@
-import { Image, View } from "react-native";
+import { Image, ImageSourcePropType, View } from "react-native";
 import { Typography } from "../Typography";
 import { styles } from "./styles";
-import interrogrationMark from "../../../assets/images/interrogationMark.png";
 
-export const NoProductFound: React.FC = () => {
+interface Props {
+  image: ImageSourcePropType;
+  title: string;
+  text: string;
+  iconStyle?: any;
+}
+
+export const NoProductFound: React.FC<Props> = ({ image, title, text, iconStyle }) => {
   return (
     <View>
-      <Image source={interrogrationMark} style={styles.interrogationMark} />
+      <Image source={image} style={[styles.icon, iconStyle]} />
       <Typography type="subtitle" style={styles.noProductFoundText}>
-        Item não encontrado
+        {title}
       </Typography>
       <Typography type="paragraph" style={styles.noProductText}>
-        Tente procurar por um termo mais genério ou olhe outros produtos
+        {text}
       </Typography>
     </View>
   );

@@ -8,6 +8,9 @@ import { styles } from "./styles"
 import { CartProductList } from '../../components/Cart/CartProductList';
 import { Button } from '../../components/Button';
 import { Typography } from '../../components/Typography';
+import { NoProductFound } from '../../components/NoProductFound';
+
+import headphone from "../../../assets/images/headphone.png";
 
 export const Cart = () => {
 
@@ -44,13 +47,22 @@ export const Cart = () => {
         <View style={styles.container}>
             <Typography type="subtitle" style={styles.title}> Carrinho </Typography>
             <View style={styles.listContainer}>
-                <CartProductList 
-                    products={products} 
-                    handleDelete={handleDelete}
-                    handleAmountChange={handleAmountChange}
-                />
+                {products.length > 0 ? (
+                    <CartProductList
+                        products={products}
+                        handleDelete={handleDelete}
+                        handleAmountChange={handleAmountChange}
+                    />
+                ) : (
+                    <NoProductFound
+                        image={headphone}
+                        title={"O carrinho está vazio"}
+                        text={"Adicione produtos ao carrinho para continuar"}
+                        iconStyle={{ width: 200, height: 200 }}
+                    />
+                )}
             </View>
-            <Button text="Realizar pedido" onPress={() => console.log("Checkout")}/>
+            {products.length > 0 && <Button text="Realizar pedido" onPress={() => console.log("Checkout")} />}
         </View>
     )
 }   
