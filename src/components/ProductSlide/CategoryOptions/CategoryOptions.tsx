@@ -2,12 +2,12 @@ import React, { useEffect } from "react";
 import { Pressable, ScrollView, Text, View } from "react-native";
 import Toast from "react-native-toast-message";
 import { api } from "../../../service";
-import { Category } from "../ProductSlide";
+import { CategoryI } from "../ProductSlide";
 import { styles } from "./styles";
 
 interface Props {
-  categories: Category[];
-  setCategories: React.Dispatch<React.SetStateAction<Category[]>>;
+  categories: CategoryI[];
+  setCategories: React.Dispatch<React.SetStateAction<CategoryI[]>>;
   selectedCategoryId: string;
   setSelectedCategoryId: React.Dispatch<React.SetStateAction<string>>;
 }

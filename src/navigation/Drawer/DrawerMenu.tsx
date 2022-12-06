@@ -11,7 +11,7 @@ const Drawer = createDrawerNavigator();
 export const DrawerMenu = () => {
   return (
     <Drawer.Navigator
-      screenOptions={drawerStyleOptions}
+      screenOptions={drawerStyleOptions?.screenOptions}
       useLegacyImplementation
       drawerContent={(props: T) => {
         return <DrawerContent {...props} />
