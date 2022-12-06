@@ -19,7 +19,6 @@ export const Cart = () => {
         const getProducts = async () => {
             const cart = await getItem();
             const cartParsed = cart ? JSON.parse(cart) : [];
-            console.log(cartParsed);
             setProducts(cartParsed)
         }
         getProducts()

@@ -17,7 +17,7 @@ interface Props {
 export const CartProductList: React.FC<Props> = ({ products, handleDelete, handleAmountChange }) => {
     return (
         <View style={styles.container}>
-            {products.length > 0 ? (
+            {products.length > 0 && 
                 <FlatList
                     data={products}
                     keyExtractor={(item) => item.product.id}
@@ -30,7 +30,6 @@ export const CartProductList: React.FC<Props> = ({ products, handleDelete, handl
                         />
                     }
                 />
-            ) : null
             }
         </View>
     );
