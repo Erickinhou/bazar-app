@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 import { View } from "react-native"
 import { useAsyncStorage } from '@react-native-async-storage/async-storage';
-import { useIsFocused } from '@react-navigation/native';
+import { useIsFocused, useNavigation } from '@react-navigation/native';
 
 import { styles } from "./styles"
+import { NavigationProps } from '../../navigation/types';
 
 import { CartProductList } from '../../components/Cart/CartProductList';
 import { Button } from '../../components/Button';
@@ -17,6 +18,7 @@ export const Cart = () => {
     const [products, setProducts] = React.useState([])
     const isFocused = useIsFocused();
     const { getItem, setItem } = useAsyncStorage('@cart');
+    const navigation = useNavigation<NavigationProps>();
 
     useEffect(() => {
         const getProducts = async () => {
@@ -43,6 +45,10 @@ export const Cart = () => {
         setProducts(cartParsed)
     };
 
+    const handleProceedToOrder = () => {
+        navigation.navigate("Order");
+    }
+
     return (
         <View style={styles.container}>
             <Typography type="subtitle" style={styles.title}> Carrinho </Typography>
@@ -62,7 +68,7 @@ export const Cart = () => {
                     />
                 )}
             </View>
-            {products.length > 0 && <Button text="Realizar pedido" onPress={() => console.log("Checkout")} />}
+            {products.length > 0 && <Button text="Realizar pedido" onPress={() => handleProceedToOrder()} />}
         </View>
     )
 }   

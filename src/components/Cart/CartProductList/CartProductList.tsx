@@ -4,13 +4,13 @@ import { CartProductCard } from "../CartProductCard";
 import { styles } from "./styles";
 
 
-export interface CartProduct {
+export interface CartProductI {
     product: ProductI;
     amount: number;
 }
 
 interface Props {
-    products: CartProduct[];
+    products: CartProductI[];
     handleDelete?: (index: number) => void;
     handleAmountChange?: (index: number, amount: number) => void;
 }
