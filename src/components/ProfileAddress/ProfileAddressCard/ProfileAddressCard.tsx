@@ -22,17 +22,17 @@ export const ProfileAddressCard: React.FC<Props> = ({ index, address }) => {
 
   const navigation = useNavigation<NavigationProps>();
 
-  const isActive = user.defaultAddress === address.id;
+  const isActive = user.defaultAddress === address?.id;
 
   const handleDefaultAddress = async () => {
     try {
       if (isActive) return;
       await api.put(`/user/${user?.id}`, {
         ...user,
-        defaultAddress: address.id,
+        defaultAddress: address?.id,
       });
       setUser((prev) => {
-        return { ...prev, defaultAddress: address.id };
+        return { ...prev, defaultAddress: address?.id };
       });
       Toast.show({
         type: "success",
@@ -51,16 +51,17 @@ export const ProfileAddressCard: React.FC<Props> = ({ index, address }) => {
   const removeAddress = async () => {
     try {
       await api.delete(`/address/${address.id}`);
-      navigation.navigate("ProfileMenu");
       Toast.show({
         type: "success",
         text1: "Registro concluido",
         text2: "Endereço removido com sucesso",
       });
+      navigation.goBack();
     } catch (err) {
       Toast.show({
         type: "error",
-        text1: "Falhou",
+        text1: "Houve um erro removendo seu endereço",
+        text2: "Realize login novamente",
       });
     }
   };

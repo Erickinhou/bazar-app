@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { View } from "react-native";
 import { ScreenType } from "../../navigation/types";
 import { ProductI } from "../../components/ProductSlide";
 import { ImageSlider } from "../../components/ImageSlider";

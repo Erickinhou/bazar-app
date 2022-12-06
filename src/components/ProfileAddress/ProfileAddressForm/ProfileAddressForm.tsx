@@ -13,7 +13,7 @@ import { Input, InputDataChangeProps } from "../../Input";
 import { NavigationProps } from "../../../navigation/types";
 import { useUser } from "../../../context/user";
 
-interface FormI {
+export interface AddressI {
   street: string;
   number: number;
   district: string;
@@ -34,8 +34,8 @@ interface Props {
 
 export const ProfileAddressForm: React.FC<Props> = ({ route }) => {
   const { address } = route.params || {};
-  const [user] = useUser();
-  const [addrForm, setAddrForm] = React.useState<FormI>({
+  const [user, setUser] = useUser();
+  const [addrForm, setAddrForm] = React.useState<AddressI>({
     street: address ? address.street : "",
     number: address ? address.number : 0,
     district: address ? address.district : "",
@@ -49,16 +49,23 @@ export const ProfileAddressForm: React.FC<Props> = ({ route }) => {
   const navigation = useNavigation<NavigationProps>();
 
   const handleAddSubmit = async () => {
-    setDisabled(true);
     try {
+      setDisabled(true);
       addrForm.number = Number(addrForm.number);
-      await api.post("/address", addrForm);
-      navigation.navigate("ProfileMenu");
+      const { data: newAddress } = await api.post<Address>(
+        "/address",
+        addrForm
+      );
+
+      setUser((prev) => {
+        return { ...prev, defaultAddress: newAddress?.id };
+      });
       Toast.show({
         type: "success",
         text1: "Registro concluido",
         text2: "Dados de endereço cadastrados com sucesso",
       });
+      navigation.goBack();
     } catch (err) {
       Toast.show({
         type: "error",
@@ -76,7 +83,7 @@ export const ProfileAddressForm: React.FC<Props> = ({ route }) => {
       let addrFormCopy = { ...addrForm };
       delete addrFormCopy.user;
       await api.put(`/address/${address.id}`, addrFormCopy);
-      navigation.navigate("ProfileMenu");
+      navigation.goBack();
       Toast.show({
         type: "success",
         text1: "Registro concluido",

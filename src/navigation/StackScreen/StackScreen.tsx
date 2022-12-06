@@ -18,6 +18,7 @@ import { RootStackParamList } from "../types";
 import { colorPalette } from "../../theme/colors";
 import { clearHeaderOptions } from "./styles";
 import { Product } from "../../screens/Product";
+import { Order } from "../../screens/Order";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -113,6 +114,17 @@ export const StackScreen = () => {
         options={{
           ...clearHeaderOptions,
           headerTitle: () => <SearchBar />,
+        }}
+      />
+      <Stack.Screen
+        name="Order"
+        component={Order}
+        options={{
+          headerShadowVisible: false,
+          title: "Pedidos",
+          headerStyle: {
+            backgroundColor: colorPalette.backgroundWhite,
+          },
         }}
       />
     </Stack.Navigator>

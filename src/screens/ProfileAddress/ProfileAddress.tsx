@@ -35,7 +35,7 @@ export const ProfileAddress: React.FC<Props> = ({ route }) => {
       setAddresses(data);
     }
     getAddress();
-  }, []);
+  }, [user]);
 
   return (
     <View style={styles.container}>
