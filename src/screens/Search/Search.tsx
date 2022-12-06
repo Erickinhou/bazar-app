@@ -7,6 +7,8 @@ import { ProductI } from "../../components/ProductSlide";
 import { api } from "../../service";
 import { NoProductFound } from "../../components/NoProductFound";
 import { SearchProductList } from "../../components/Search/SearchProductList";
+import interrogrationMark from "../../../assets/images/interrogationMark.png";
+
 
 type Props = ScreenType<"Search">;
 
@@ -38,7 +40,11 @@ export const Search: React.FC<Props> = () => {
         </View>
       ) : (
         <View style={styles.containerNoProduct}>
-          <NoProductFound />
+          <NoProductFound 
+            image={interrogrationMark}
+            title={"Item não encontrado"}
+            text={"Tente procurar por um termo mais genério ou olhe outros produtos"}
+          />
         </View>
       )}
     </>

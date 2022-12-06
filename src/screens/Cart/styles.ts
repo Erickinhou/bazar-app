@@ -10,6 +10,8 @@ export const styles = StyleSheet.create({
   listContainer: {
     flex: 1,
     padding: 10,
+    alignContent: "center",
+    justifyContent: "center",
   },
   title: {
     textAlign: "center",

@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 import { colorPalette } from "../../theme/colors";
 
 export const styles = StyleSheet.create({
-  interrogationMark: {
+  icon: {
     width: 100,
     height: 100,
     resizeMode: "contain",
