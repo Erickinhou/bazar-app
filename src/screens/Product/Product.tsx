@@ -8,6 +8,7 @@ import { ImageSlider } from "../../components/ImageSlider";
 import { styles } from "./styles";
 import { Typography } from "../../components/Typography";
 import { Button } from "../../components/Button";
+import Toast from "react-native-toast-message";
 
 type Props = ScreenType<"Product">;
 type Routes = {
@@ -23,15 +24,27 @@ export const Product: React.FC<Props> = ({ route, navigation }) => {
   }
 
   const handleAddToCart = async () => {
-    const cart = await getItem();
-    const cartParsed = cart ? JSON.parse(cart) : [];
-    const productExists = cartParsed.find((item: any) => item.product.id === product.id);
-    if (productExists) {
-      cartParsed.find((item: any) => item.product.id === product.id).amount += 1;
-    } else {
-      cartParsed.push({ product: product, amount: 1 });
+    try {
+      const cart = await getItem();
+      const cartParsed = cart ? JSON.parse(cart) : [];
+      const productExists = cartParsed.find((item: any) => item.product.id === product.id);
+      if (productExists) {
+        cartParsed.find((item: any) => item.product.id === product.id).amount += 1;
+      } else {
+        cartParsed.push({ product: product, amount: 1 });
+      }
+      await setItem(JSON.stringify(cartParsed));
+      Toast.show({
+        type: "success",
+        text1: "Item adicionado ao carrinho",
+        visibilityTime: 1500,
+      });
+    } catch (error) {
+      Toast.show({
+        type: "fail",
+        text1: "Houve algum problema para adicionar o item ao carrinho",
+      });
     }
-    await setItem(JSON.stringify(cartParsed));
   };
 
   return (
