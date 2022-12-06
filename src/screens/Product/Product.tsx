@@ -1,5 +1,7 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { View } from "react-native";
+import { useAsyncStorage } from "@react-native-async-storage/async-storage";
+
 import { ScreenType } from "../../navigation/types";
 import { ProductI } from "../../components/ProductSlide";
 import { ImageSlider } from "../../components/ImageSlider";
@@ -14,10 +16,23 @@ type Routes = {
 
 export const Product: React.FC<Props> = ({ route, navigation }) => {
   const { product }: Routes = route.params;
+  const { getItem, setItem } = useAsyncStorage('@cart');
 
   if (!product) {
     navigation.navigate("Login");
   }
+
+  const handleAddToCart = async () => {
+    const cart = await getItem();
+    const cartParsed = cart ? JSON.parse(cart) : [];
+    const productExists = cartParsed.find((item: any) => item.product.id === product.id);
+    if (productExists) {
+      cartParsed.find((item: any) => item.product.id === product.id).amount += 1;
+    } else {
+      cartParsed.push({ product: product, amount: 1 });
+    }
+    await setItem(JSON.stringify(cartParsed));
+  };
 
   return (
     <View style={styles.container}>
@@ -40,7 +55,7 @@ export const Product: React.FC<Props> = ({ route, navigation }) => {
       <View style={styles.button}>
         <Button
           onPress={() => {
-            console.log("go to card");
+            handleAddToCart();
           }}
           text="Adicionar o carrinho"
         />

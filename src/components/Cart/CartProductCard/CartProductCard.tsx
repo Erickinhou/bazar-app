@@ -1,5 +1,6 @@
 import React from 'react';
 import { Image, TouchableOpacity, View } from "react-native";
+import { useAsyncStorage } from '@react-native-async-storage/async-storage';
 
 import { styles } from "./styles";
 import { Typography } from "../../Typography";
@@ -10,23 +11,24 @@ import deleteIcon from "../../../../assets/images/deleteIcon.png";
 interface Props {
     index: number;
     products: CartProduct;
-    handleAmountChange: (index:number, amount:number) => void;
+    handleDelete?: (index: number) => void;
+    handleAmountChange?: (index: number, amount: number) => void;
 }
 
-export const CartProductCard: React.FC<Props> = ({ index, products, handleAmountChange }) => {
+export const CartProductCard: React.FC<Props> = ({ index, products, handleDelete, handleAmountChange }) => {
     const { product, amount } = products;
     const { title, price, images } = product;
-    const [amountState, setAmountState] = React.useState(amount);
 
+    const handleDeletePress = () => {
+        handleDelete(index);
+    };
     const handleMinus = () => {
-        if (amountState > 1) {
+        if (amount > 1) {
             handleAmountChange(index, -1);
-            setAmountState(amountState - 1);
         }
     };
-    const handlePlus =  () => {
+    const handlePlus = () => {
         handleAmountChange(index, 1)
-        setAmountState(amountState + 1);
     };
 
     return (
@@ -37,18 +39,18 @@ export const CartProductCard: React.FC<Props> = ({ index, products, handleAmount
             <View style={styles.infoContainer}>
                 <Typography type="paragraph" style={styles.title}> {title} </Typography>
                 <Typography type="paragraph" style={styles.price}> R${price} </Typography>
-                <View style={[{justifyContent:"space-between"}, styles.amountContainer]}>
+                <View style={[{ justifyContent: "space-between" }, styles.amountContainer]}>
                     <View style={styles.amountContainer}>
                         <Typography type="paragraph"> Quantidade:  </Typography>
                         <TouchableOpacity style={styles.amountButton} onPress={handleMinus}>
                             <Typography type="paragraph" style={styles.amountButtonText}> {"-"} </Typography>
                         </TouchableOpacity>
-                        <Typography type="paragraph"> {amountState} </Typography>
+                        <Typography type="paragraph"> {amount} </Typography>
                         <TouchableOpacity style={styles.amountButton} onPress={handlePlus}>
                             <Typography type="paragraph" style={styles.amountButtonText}> {"+"} </Typography>
                         </TouchableOpacity>
                     </View>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={handleDeletePress}>
                         <Image source={deleteIcon} style={styles.deleteIcon} />
                     </TouchableOpacity>
                 </View>

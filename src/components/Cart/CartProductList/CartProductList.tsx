@@ -10,21 +10,28 @@ export interface CartProduct {
 
 interface Props {
     products: CartProduct[];
+    handleDelete?: (index: number) => void;
+    handleAmountChange?: (index: number, amount: number) => void;
 }
 
-export const CartProductList: React.FC<Props> = ({ products }) => {
-
-    const handleAmountChange = (listIndex: number, amount: number) => {
-        products[listIndex].amount += amount;
-    };
-
+export const CartProductList: React.FC<Props> = ({ products, handleDelete, handleAmountChange }) => {
     return (
         <View style={styles.container}>
-            <FlatList
-                data={products}
-                keyExtractor={(item) => item.product.id}
-                renderItem={({ index, item }) => <CartProductCard index={index} products={item} handleAmountChange={handleAmountChange} />}
-            />
+            {products.length > 0 ? (
+                <FlatList
+                    data={products}
+                    keyExtractor={(item) => item.product.id}
+                    renderItem={({ index, item }) => 
+                        <CartProductCard 
+                            index={index} 
+                            products={item} 
+                            handleDelete={handleDelete} 
+                            handleAmountChange={handleAmountChange} 
+                        />
+                    }
+                />
+            ) : null
+            }
         </View>
     );
 };
