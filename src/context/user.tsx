@@ -7,6 +7,7 @@ export interface User {
   password: string;
   phone: string;
   cpf: string;
+  defaultAddress?: string | null;
   updatedDate: string;
   createdDate: string;
 }

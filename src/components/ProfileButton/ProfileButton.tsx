@@ -2,7 +2,6 @@ import { Image, Pressable, PressableProps, Text, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { Typography } from "../Typography";
 
-
 import arrowLeftIcon from "../.././../assets/images/arrowLeftIcon.png";
 
 import { styles } from "./styles";
@@ -16,11 +15,9 @@ interface Props extends PressableProps {
 }
 
 export const ProfileButton: React.FC<Props> = ({ option, ...rest }) => {
-  
   const navigation = useNavigation<NavigationProps>();
 
   const handleClick = () => {
-    console.log(option.navigateTo);
     navigation.navigate(option.navigateTo);
   };
   return (

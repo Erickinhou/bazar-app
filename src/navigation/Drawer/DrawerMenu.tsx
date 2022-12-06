@@ -1,4 +1,7 @@
-import { createDrawerNavigator } from "@react-navigation/drawer";
+import {
+  createDrawerNavigator,
+  DrawerContentComponentProps,
+} from "@react-navigation/drawer";
 
 import { drawerStyleOptions } from "./styles";
 import { DrawerContent } from "../../components/DrawerContent";
@@ -11,14 +14,14 @@ const Drawer = createDrawerNavigator();
 export const DrawerMenu = () => {
   return (
     <Drawer.Navigator
-      screenOptions={drawerStyleOptions?.screenOptions}
+      screenOptions={drawerStyleOptions}
       useLegacyImplementation
-      drawerContent={(props: T) => {
-        return <DrawerContent {...props} />
+      drawerContent={(props: DrawerContentComponentProps) => {
+        return <DrawerContent {...props} />;
       }}
     >
       <Drawer.Screen name="Screens">
-        {props => (
+        {(props) => (
           <AnimatedDrawerView>
             <StackScreen />
           </AnimatedDrawerView>

@@ -9,6 +9,9 @@ export const styles = StyleSheet.create({
   },
   icon: {
     marginRight: 5,
+    width: 24,
+    tintColor: colorPalette.mediumLight,
+    height: 24,
   },
   text: {
     color: colorPalette.mediumLight,

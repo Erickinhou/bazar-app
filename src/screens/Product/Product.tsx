@@ -1,7 +1,6 @@
 import React from "react";
 import { View } from "react-native";
 import { useAsyncStorage } from "@react-native-async-storage/async-storage";
-
 import { ScreenType } from "../../navigation/types";
 import { ProductI } from "../../components/ProductSlide";
 import { ImageSlider } from "../../components/ImageSlider";

@@ -21,6 +21,7 @@ export interface RootStackParamList extends ParamListBase {
   ProfileMenu: undefined;
   Profile: undefined;
   Dashboard: undefined;
+  Order: undefined;
   Product: { product: ProductI };
 }
 

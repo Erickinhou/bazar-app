@@ -11,33 +11,34 @@ import { NavigationProps } from "../../../navigation/types";
 import { ProfileAddressCard } from "../ProfileAddressCard";
 
 interface Props {
-    addresses: Address[];
+  addresses: Address[];
 }
 
 export const ProfileAddressList: React.FC<Props> = ({ addresses }) => {
+  const navigation = useNavigation<NavigationProps>();
 
-    const [disabled, setDisabled] = React.useState(false);
-    const navigation = useNavigation<NavigationProps>();
+  const handleAddAddress = () => {
+    navigation.navigate("ProfileAddressForm");
+  };
 
-    const handleAddAddress = () => {
-        navigation.navigate("ProfileAddressForm");
-    }
-
-    return (
-        <View style={styles.container}>
-            <ScrollView style={styles.addressCardContainer}>
-                {addresses?.map((address, index) => (
-                    <ProfileAddressCard key={address.id} index={index} address={address} />
-                ))}
-            </ScrollView>
-            <View style={styles.buttonContainer}>
-                <Button
-                    type="primary"
-                    text="Adicionar novo endereco"
-                    onPressIn={handleAddAddress}
-                    disabled={disabled}
-                />
-            </View>
-        </View>
-    );
+  return (
+    <View style={styles.container}>
+      <ScrollView style={styles.addressCardContainer}>
+        {addresses?.map((address, index) => (
+          <ProfileAddressCard
+            key={address.id}
+            index={index}
+            address={address}
+          />
+        ))}
+      </ScrollView>
+      <View style={styles.buttonContainer}>
+        <Button
+          type="primary"
+          text="Adicionar novo endereco"
+          onPressIn={handleAddAddress}
+        />
+      </View>
+    </View>
+  );
 };
