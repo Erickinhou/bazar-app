@@ -6,6 +6,7 @@ import { Register } from "../../screens/Register";
 import { Profile } from "../../screens/Profile";
 import { ProfileAddress } from "../../screens/ProfileAddress";
 import { ProfileAddressForm } from "../../components/ProfileAddress/ProfileAddressForm";
+import { ProfileOrders } from "../../screens/ProfileOrders";
 import { ProfileMenu } from "../../screens/ProfileMenu";
 import { Search } from "../../screens/Search";
 
@@ -19,6 +20,7 @@ import { colorPalette } from "../../theme/colors";
 import { clearHeaderOptions } from "./styles";
 import { Product } from "../../screens/Product";
 import { Order } from "../../screens/Order";
+import { ProfileOrderDetails } from "../../components/ProfileOrders/ProfileOrderDetails";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -100,6 +102,28 @@ export const StackScreen = () => {
       <Stack.Screen
         name="ProfileAddressForm"
         component={ProfileAddressForm}
+        options={{
+          headerShadowVisible: false,
+          title: "Meus Endereços",
+          headerStyle: {
+            backgroundColor: colorPalette.backgroundWhite,
+          },
+        }}
+      />
+      <Stack.Screen
+        name="ProfileOrders"
+        component={ProfileOrders}
+        options={{
+          headerShadowVisible: false,
+          title: "Meus Endereços",
+          headerStyle: {
+            backgroundColor: colorPalette.backgroundWhite,
+          },
+        }}
+      />
+      <Stack.Screen
+        name="ProfileOrderDetails"
+        component={ProfileOrderDetails}
         options={{
           headerShadowVisible: false,
           title: "Meus Endereços",

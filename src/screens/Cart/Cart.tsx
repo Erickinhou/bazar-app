@@ -20,12 +20,13 @@ export const Cart = () => {
     const { getItem, setItem } = useAsyncStorage('@cart');
     const navigation = useNavigation<NavigationProps>();
 
+    const getProducts = async () => {
+        const cart = await getItem();
+        const cartParsed = cart ? JSON.parse(cart) : [];
+        setProducts(cartParsed)
+    }
+
     useEffect(() => {
-        const getProducts = async () => {
-            const cart = await getItem();
-            const cartParsed = cart ? JSON.parse(cart) : [];
-            setProducts(cartParsed)
-        }
         getProducts()
     }, [isFocused])
 

@@ -23,17 +23,18 @@ export const ProfileAddress: React.FC<Props> = ({ route }) => {
   const [user] = useUser();
   const [addresses, setAddresses] = React.useState<Address[]>();
 
-  useEffect(() => {
-    async function getAddress() {
-      const { data } = await api.get("/addresses", {
-        params: {
-          filter: {
-            userId: user?.id,
-          },
+  const getAddress = async () => {
+    const { data } = await api.get("/addresses", {
+      params: {
+        filter: {
+          userId: user?.id,
         },
-      });
-      setAddresses(data);
-    }
+      },
+    });
+    setAddresses(data);
+  }
+
+  useEffect(() => {
     getAddress();
   }, [user]);
 
