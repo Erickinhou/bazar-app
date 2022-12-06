@@ -23,6 +23,7 @@ type Props = ScreenType<"Order">;
 export const Order: React.FC<Props> = () => {
   const [user] = useUser();
   const [order, setOrder] = useState<Partial<OrderI>>({
+    paymentMethod: "pix",
     address: { id: user.defaultAddress },
   });
   const navigation = useNavigation<NavigationProps>();
@@ -42,6 +43,9 @@ export const Order: React.FC<Props> = () => {
         text1: "Sucesso",
         text2: "Pedido concluido com sucesso",
       });
+    }
+    if (order.paymentMethod === "pix") {
+      navigation.navigate("Pix");
     }
   };
   return (

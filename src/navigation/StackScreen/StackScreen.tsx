@@ -19,6 +19,7 @@ import { colorPalette } from "../../theme/colors";
 import { clearHeaderOptions } from "./styles";
 import { Product } from "../../screens/Product";
 import { Order } from "../../screens/Order";
+import { Pix } from "../../screens/Pix";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -122,6 +123,17 @@ export const StackScreen = () => {
         options={{
           headerShadowVisible: false,
           title: "Pedidos",
+          headerStyle: {
+            backgroundColor: colorPalette.backgroundWhite,
+          },
+        }}
+      />
+      <Stack.Screen
+        name="Pix"
+        component={Pix}
+        options={{
+          headerShadowVisible: false,
+          title: "Pix",
           headerStyle: {
             backgroundColor: colorPalette.backgroundWhite,
           },
