@@ -13,6 +13,7 @@ export const styles = StyleSheet.create({
     width: 20,
     height: 20,
     resizeMode: "contain",
+    tintColor: colorPalette.white,
   },
   drawerItem: {
     borderBottomWidth: 1,

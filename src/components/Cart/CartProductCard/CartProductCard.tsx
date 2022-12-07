@@ -1,16 +1,15 @@
 import React from 'react';
 import { Image, TouchableOpacity, View } from "react-native";
-import { useAsyncStorage } from '@react-native-async-storage/async-storage';
 
 import { styles } from "./styles";
 import { Typography } from "../../Typography";
-import { CartProduct } from '../CartProductList';
+import { CartProductI } from '../CartProductList';
 
 import deleteIcon from "../../../../assets/images/deleteIcon.png";
 
 interface Props {
     index: number;
-    products: CartProduct;
+    products: CartProductI;
     handleDelete?: (index: number) => void;
     handleAmountChange?: (index: number, amount: number) => void;
 }
