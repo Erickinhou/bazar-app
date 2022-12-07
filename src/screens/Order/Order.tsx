@@ -14,7 +14,7 @@ import { CartProductI } from "../../components/Cart/CartProductList";
 import { AddressCard } from "../../components/AddressCard";
 import { Button } from "../../components/Button";
 import { PaymentMethod } from "../../components/PaymentMethod";
-import { useUser } from "../../context/user";
+import { User, useUser } from "../../context/user";
 
 export interface OrderI {
   userId: string;
@@ -23,6 +23,13 @@ export interface OrderI {
   address: {
     id: string;
   };
+}
+
+interface OrderResponse extends Omit<OrderI, "userId"> {
+  createdDate: string;
+  updatedDate: string;
+  id: string;
+  user: User;
 }
 
 export interface OrderProductI {
@@ -53,61 +60,59 @@ export const Order: React.FC<Props> = () => {
     });
   };
 
+  const cleanCart = () => {
+    AsyncStorage.clear();
+  };
+
   const createOrder = async (
     status: "processing" | "paid" | "local_receive" | "complete"
   ) => {
-    try {
-      const { data: orderData } = await api.post("/order", {
-        ...order,
-        status: status,
-      });
-      return orderData;
-    } catch (error) {
-      console.log(error.response.data);
-    }
+    const { data: orderData } = await api.post<OrderResponse>("/order", {
+      ...order,
+      status: status,
+    });
+    return orderData;
   };
 
-  const createOrderProduct = async (orderData: any) => {
-    try {
-      const cart = await getItem();
-      const cartParsed = cart ? JSON.parse(cart) : [];
-      let obejct: OrderProductI[] = [];
-      cartParsed.forEach(async (product: CartProductI) => {
-        obejct.push({
-          product: { id: product.product.id },
+  const createOrderProduct = async (orderData: OrderResponse) => {
+    const cart = await getItem();
+    const cartParsed: CartProductI[] = cart ? JSON.parse(cart) : [];
+    const orderProductData: OrderProductI[] = cartParsed.map(
+      (cardProduct: CartProductI) => {
+        return {
+          product: { id: cardProduct.product.id },
           order: { id: orderData.id },
-          amount: product.amount,
-        });
-      });
-      await api.post("/orderProducts", obejct);
-    } catch (error) {
-      console.log(error.response.data);
-    }
+          amount: cardProduct.amount,
+        };
+      }
+    );
+    await api.post("/orderProducts", orderProductData);
   };
 
   const handleConfirmOrder = async () => {
-    // Todo create Pix Payment
-    if (order.paymentMethod === "local") {
-      try {
+    try {
+      if (order.paymentMethod === "local") {
         const orderData = await createOrder("local_receive");
-        createOrderProduct(orderData);
+        await createOrderProduct(orderData);
         navigation.navigate("DashboardTabs", { screen: "Dashboard" });
-        Toast.show({
-          type: "success",
-          text1: "Sucesso",
-          text2: "Pedido concluido com sucesso",
-        });
-        AsyncStorage.clear();
-      } catch (error) {
-        Toast.show({
-          type: "error",
-          text1: "Erro",
-          text2: "Erro ao concluir pedido",
-        });
       }
-    }
-    if (order.paymentMethod === "pix") {
-      navigation.navigate("Pix");
+      if (order.paymentMethod === "pix") {
+        const orderData = await createOrder("processing");
+        await createOrderProduct(orderData);
+        navigation.navigate("Pix");
+      }
+      Toast.show({
+        type: "success",
+        text1: "Sucesso",
+        text2: "Pedido concluido com sucesso",
+      });
+      cleanCart();
+    } catch (error) {
+      Toast.show({
+        type: "error",
+        text1: "Erro",
+        text2: "Erro ao concluir pedido",
+      });
     }
   };
   return (
