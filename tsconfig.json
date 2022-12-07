@@ -4,5 +4,6 @@
   "compilerOptions": {
     "jsx": "react-jsx",
     "noImplicitAny": true
-  }
+  },
+  "typeRoots": ["./types"]
 }
