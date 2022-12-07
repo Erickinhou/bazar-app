@@ -13,4 +13,7 @@ export const styles = StyleSheet.create({
   largeParagraph: {
     fontSize: 20,
   },
+  fontFamily: {
+    fontFamily: "Raleway_400Regular",
+  },
 });
