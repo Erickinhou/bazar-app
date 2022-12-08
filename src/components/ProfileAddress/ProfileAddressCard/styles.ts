@@ -19,6 +19,7 @@ export const styles = StyleSheet.create({
   },
   infoContainer: {
     flex: 3,
+    flexWrap: "wrap",
   },
   buttonsContainer: {
     flex: 1,

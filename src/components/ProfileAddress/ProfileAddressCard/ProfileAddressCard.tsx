@@ -89,7 +89,11 @@ export const ProfileAddressCard: React.FC<Props> = ({ index, address }) => {
           </Typography>
           <Typography type={"paragraph"}>
             {""}
-            CEP: {address.cep} - {address.district} {""}
+            Distrito: {address.district} {""}
+          </Typography>
+          <Typography type={"paragraph"}>
+            {""}
+            CEP: {address.cep} {""}
           </Typography>
         </View>
         <View style={styles.buttonsContainer}>
