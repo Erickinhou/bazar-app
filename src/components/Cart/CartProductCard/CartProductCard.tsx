@@ -29,6 +29,11 @@ export const CartProductCard: React.FC<Props> = ({ index, products, handleDelete
     const handlePlus = () => {
         handleAmountChange(index, 1)
     };
+    const handleShowTotalPrice = () => {
+        const auxPrice = price.replace(",", ".");
+        const totalPrice = (parseFloat(auxPrice) * amount).toFixed(2);
+        return totalPrice.replace(".", ",");
+    }
 
     return (
         <View style={styles.container}>
@@ -37,7 +42,7 @@ export const CartProductCard: React.FC<Props> = ({ index, products, handleDelete
             </View>
             <View style={styles.infoContainer}>
                 <Typography type="paragraph" style={styles.title}> {title} </Typography>
-                <Typography type="paragraph" style={styles.price}> R${price} </Typography>
+                <Typography type="paragraph" style={styles.price}> R${handleShowTotalPrice()} </Typography>
                 <View style={[{ justifyContent: "space-between" }, styles.amountContainer]}>
                     <View style={styles.amountContainer}>
                         <Typography type="paragraph"> Quantidade:  </Typography>
