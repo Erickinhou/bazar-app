@@ -40,7 +40,7 @@ export const CategoryOptions: React.FC<Props> = ({
 
   return (
     <View style={styles.container}>
-      <ScrollView horizontal={true}>
+      <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
         {categories.map((category) => (
           <View key={category.id}>
             <Pressable onPress={() => setSelectedCategoryId(category.id)}>

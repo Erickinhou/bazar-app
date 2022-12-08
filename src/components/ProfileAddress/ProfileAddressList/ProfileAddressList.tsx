@@ -23,7 +23,7 @@ export const ProfileAddressList: React.FC<Props> = ({ addresses }) => {
 
   return (
     <View style={styles.container}>
-      <ScrollView style={styles.addressCardContainer}>
+      <ScrollView style={styles.addressCardContainer} showsVerticalScrollIndicator={false}>
         {addresses?.map((address, index) => (
           <ProfileAddressCard
             key={address.id}

@@ -82,6 +82,7 @@ export const ProfileForm: React.FC = () => {
     <ScrollView
       automaticallyAdjustKeyboardInsets={true}
       style={styles.container}
+      showsVerticalScrollIndicator={false}
     >
       <Typography type="subtitle" style={styles.title}>
         Perfil de Usuário

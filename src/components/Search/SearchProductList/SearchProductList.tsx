@@ -23,6 +23,7 @@ export const SearchProductList: React.FC<Props> = ({ products }) => {
           renderItem={({ item, index }) => (
             <ProductCard product={item} index={index} search />
           )}
+          showsVerticalScrollIndicator={false}
         />
       </View>
     </View>
