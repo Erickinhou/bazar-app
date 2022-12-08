@@ -72,7 +72,9 @@ export const Cart = () => {
             </View>
             {products.length > 0 && (
                 <View>
-                    <CartOrderTotalPrice products={products} style={{textAlign: "center"}}/>
+                    <CartOrderTotalPrice products={products} style={{textAlign: "center"}}>
+                        Total: {" "}
+                    </CartOrderTotalPrice>
                     <Button text="Realizar pedido" onPress={() => handleProceedToOrder()} />
                 </View>
             )}

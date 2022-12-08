@@ -6,10 +6,11 @@ import { styles } from "./styles"
 interface Props {
     products: CartProductI[];
     style?: any;
+    children?: React.ReactNode;
 }
 
 
-export const CartOrderTotalPrice: React.FC<Props> = ({ products, style }) => {
+export const CartOrderTotalPrice: React.FC<Props> = ({ products, style, children }) => {
 
     const handleShowTotalPrice = () => {
         let totalPrice = 0;
@@ -23,7 +24,9 @@ export const CartOrderTotalPrice: React.FC<Props> = ({ products, style }) => {
 
     return (
         <View style={styles.container}>
-            <Typography type="largeParagraph" style={style}>Total: R$ {handleShowTotalPrice()} </Typography>
+            <Typography type="largeParagraph" style={style}>
+                {children}R${handleShowTotalPrice()}
+            </Typography>
         </View>
     )
 }

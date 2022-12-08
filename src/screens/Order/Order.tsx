@@ -131,7 +131,9 @@ export const Order: React.FC<Props> = () => {
     <>
       <View style={styles.container}>
         <AddressCard />
-        <CartOrderTotalPrice products={cart} />
+        <CartOrderTotalPrice products={cart}>
+          Total a ser pago: {" "}
+        </CartOrderTotalPrice>
         <PaymentMethod
           order={order}
           changePaymentMethod={changePaymentMethod}
