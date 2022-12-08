@@ -13,10 +13,10 @@ export const NoProductFound: React.FC<Props> = ({ image, title, text, iconStyle 
   return (
     <View>
       <Image source={image} style={[styles.icon, iconStyle]} />
-      <Typography type="subtitle" style={[styles.noProductFoundText, styles.defaultFont]}>
+      <Typography type="subtitle" style={styles.noProductFoundText}>
         {title}
       </Typography>
-      <Typography type="paragraph" style={[styles.noProductText, , styles.defaultFont]}>
+      <Typography type="paragraph" style={styles.noProductText}>
         {text}
       </Typography>
     </View>

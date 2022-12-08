@@ -20,7 +20,4 @@ export const styles = StyleSheet.create({
     fontStyle: "normal",
     textAlign: "center",
   },
-  defaultFont: {
-    fontFamily: "Raleway_400Regular",
-  },
 });
