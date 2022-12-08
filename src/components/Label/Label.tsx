@@ -11,7 +11,7 @@ export const Label: React.FC<Props> = ({ children, icon }) => {
   return (
     <View style={styles.container}>
       {icon && <Image style={styles.icon} source={icon} />}
-      <Typography type="paragraph" style={styles.text}>
+      <Typography type="paragraph" style={[styles.text, styles.defaultFont]}>
         {children}
       </Typography>
     </View>

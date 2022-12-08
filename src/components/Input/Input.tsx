@@ -49,13 +49,13 @@ export const Input: React.FC<Props> = ({
   return (
     <View>
       <TextInput
-        style={styles.textInput}
+        style={[styles.textInput, styles.defaultFont]}
         value={value}
         onChangeText={handleChange}
         {...props}
       />
       {error && (
-        <Typography type="paragraph" style={styles.textError}>
+        <Typography type="paragraph" style={[styles.textError, styles.defaultFont]}>
           {error}
         </Typography>
       )}

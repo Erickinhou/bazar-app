@@ -10,4 +10,7 @@ export const styles = StyleSheet.create({
     marginTop: 5,
     color: colorPalette.danger,
   },
+  defaultFont: {
+    fontFamily: "Raleway_400Regular",
+  }
 });

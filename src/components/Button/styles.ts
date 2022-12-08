@@ -17,6 +17,7 @@ export const styles = StyleSheet.create({
   },
   text: {
     textAlign: "center",
+    fontFamily: "Raleway_400Regular",
   },
   primaryText: {
     color: colorPalette.backgroundWhite,
