@@ -78,20 +78,20 @@ export const ProfileAddressCard: React.FC<Props> = ({ index, address }) => {
             {""}
             Endereco {index + 1}:{""}
           </Typography>
-          <Typography type={"paragraph"}>
+          <Typography type={"paragraph"} style={styles.addressText}>
             {""}
             {address.street}
             {""}
           </Typography>
-          <Typography type={"paragraph"}>
+          <Typography type={"paragraph"} style={styles.addressText}>
             {""}
             Numero: {address.number}, {address.complement} {""}
           </Typography>
-          <Typography type={"paragraph"}>
+          <Typography type={"paragraph"} style={styles.addressText}>
             {""}
             Distrito: {address.district} {""}
           </Typography>
-          <Typography type={"paragraph"}>
+          <Typography type={"paragraph"} style={styles.addressText}>
             {""}
             CEP: {address.cep} {""}
           </Typography>

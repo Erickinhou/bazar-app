@@ -19,7 +19,6 @@ export const styles = StyleSheet.create({
   },
   infoContainer: {
     flex: 3,
-    flexWrap: "wrap",
   },
   buttonsContainer: {
     flex: 1,
@@ -32,5 +31,9 @@ export const styles = StyleSheet.create({
   addressTitle: {
     fontWeight: "bold",
     fontStyle: "italic",
+  },
+  addressText: {
+    flex: 1,
+    flexWrap: "wrap",
   },
 });
