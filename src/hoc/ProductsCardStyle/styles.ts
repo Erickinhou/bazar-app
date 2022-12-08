@@ -16,8 +16,8 @@ export const styles = {
       shadowColor: colorPalette.dark,
     },
     thumbnail: {
-      height: 150,
-      width: 150,
+      height: 120,
+      width: 120,
       borderRadius: 90,
       resizeMode: "center",
     },
