@@ -3,7 +3,8 @@ import { colorPalette } from "../../theme/colors";
 export const styles = {
   default: {
     productCardContainer: {
-      width: 200,
+      width: 220,
+      height: 320,
       alignItems: "center",
       justifyContent: "center",
       backgroundColor: colorPalette.white,
@@ -33,7 +34,11 @@ export const styles = {
       color: colorPalette.primary,
       marginTop: 10,
     },
+    typeTitle: "largeParagraph",
+    typeDescription: "paragraph",
+    typePrice: "paragraph",
   },
+
   search: {
     productCardContainer: {
       width: 150,
@@ -66,5 +71,9 @@ export const styles = {
       color: colorPalette.primary,
       marginTop: 10,
     },
+    typeTitle: "paragraph",
+    typeDescription: "paragraph",
+    typePrice: "paragraph",
   },
+  
 };

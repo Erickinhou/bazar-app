@@ -29,6 +29,15 @@ export const StackScreen = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen
+        name="DashboardTabs"
+        component={DashboardTabs}
+        options={{
+          ...clearHeaderOptions,
+          headerLeft: () => <HamburgerButton />,
+          headerRight: () => <SearchButton />,
+        }}
+      />
+      <Stack.Screen
         name="Home"
         component={Home}
         options={{ headerShown: false }}
@@ -45,15 +54,6 @@ export const StackScreen = () => {
           title: "Registro de conta nova",
           headerStyle: { backgroundColor: colorPalette.primary },
           headerTintColor: colorPalette.backgroundWhite,
-        }}
-      />
-      <Stack.Screen
-        name="DashboardTabs"
-        component={DashboardTabs}
-        options={{
-          ...clearHeaderOptions,
-          headerLeft: () => <HamburgerButton />,
-          headerRight: () => <SearchButton />,
         }}
       />
       <Stack.Screen

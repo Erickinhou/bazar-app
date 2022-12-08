@@ -13,6 +13,9 @@ interface Props {
     productTitle: object;
     productDescription: object;
     productPrice: object;
+    typeTitle: "title" | "paragraph" | "subtitle" | "largeParagraph";
+    typeDescription: "title" | "paragraph" | "subtitle" | "largeParagraph";
+    typePrice: "title" | "paragraph" | "subtitle" | "largeParagraph";
   };
 }
 
@@ -32,13 +35,13 @@ const ProductCardComponent: React.FC<Props> = ({ product, style }) => {
           }}
           style={style.thumbnail}
         />
-        <Typography type="largeParagraph" style={style.productTitle}>
+        <Typography type={style.typeTitle} style={style.productTitle}>
           {product.title}
         </Typography>
-        <Typography type="paragraph" style={style.productDescription}>
+        <Typography type={style.typeDescription} style={style.productDescription}>
           {product.description}
         </Typography>
-        <Typography type="paragraph" style={style.productPrice}>
+        <Typography type={style.typePrice} style={style.productPrice}>
           R$ {product.price}
         </Typography>
       </View>
