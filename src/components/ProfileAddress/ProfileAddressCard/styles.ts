@@ -12,7 +12,6 @@ export const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 10,
     marginVertical: 5,
-    marginHorizontal: 20,
   },
   isActive: {
     borderWidth: 1,
