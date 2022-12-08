@@ -16,6 +16,9 @@ export const styles = StyleSheet.create({
   text: {
     color: colorPalette.mediumLight,
     textAlignVertical: "center",
+  },
+  defaultText: {
     fontFamily: "Raleway_400Regular",
   },
+
 });
