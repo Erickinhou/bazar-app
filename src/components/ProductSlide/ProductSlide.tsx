@@ -70,7 +70,7 @@ export const ProductSlide = () => {
         setSelectedCategoryId={setSelectedCategoryId}
       />
       <View style={styles.productSlideContainer}>
-        <ScrollView horizontal={true}>
+        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
           {products.map((product) => {
             return <ProductCard key={product.id} product={product} />;
           })}

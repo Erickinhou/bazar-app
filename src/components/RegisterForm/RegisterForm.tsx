@@ -84,6 +84,7 @@ export const RegisterForm: React.FC = () => {
     <ScrollView
       automaticallyAdjustKeyboardInsets={true}
       style={styles.container}
+      showsVerticalScrollIndicator={false}
     >
       <Typography type="subtitle" style={styles.title}>
         Crie uma nova conta
