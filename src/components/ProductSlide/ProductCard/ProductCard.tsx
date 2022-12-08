@@ -39,11 +39,13 @@ const ProductCardComponent: React.FC<Props> = ({ product, style }) => {
         <Typography type={style.typeTitle} style={style.productTitle}>
           {product.title}
         </Typography>
-        <View style={{flex: 1}}>
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <View onStartShouldSetResponder={() => true}>
             <Typography type={style.typeDescription} style={style.productDescription}>
               {product.description}
             </Typography>
-        </View>
+          </View>
+        </ScrollView>
         <Typography type={style.typePrice} style={style.productPrice}>
           R$ {product.price}
         </Typography>
