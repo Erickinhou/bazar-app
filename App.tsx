@@ -14,7 +14,7 @@ export default function App() {
   const [fontsLoaded, setFontsLoaded] = useState(false);
   const customFonts = {
     Raleway_400Regular
-  }; 
+  };
 
   const loadFontsAsync = async () => {
     await Font.loadAsync(customFonts);
@@ -29,15 +29,16 @@ export default function App() {
       console.log(error);
     }
   }, [])
-  
+
   return (
-    fontsLoaded &&
-    <>
-      <ContextProvider>
-        <Navigation />
-        <StatusBar style="auto" />
-        <Toast />
-      </ContextProvider>
-    </>
+    fontsLoaded && ( 
+      <> 
+        <ContextProvider>
+          <Navigation />
+          <StatusBar style="auto" />
+          <Toast />
+        </ContextProvider>
+      </>
+    )
   );
 }

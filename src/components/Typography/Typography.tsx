@@ -8,7 +8,7 @@ interface Props extends TextProps {
 
 export const Typography: React.FC<Props> = ({ type, children, ...props }) => {
   return (
-    <Text {...props} style={[styles[type], styles.defaultText, props.style]}>
+    <Text {...props} style={[styles[type], styles.defaultFont, props.style]}>
       {children}
     </Text>
   );
