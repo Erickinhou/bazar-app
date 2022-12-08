@@ -21,14 +21,17 @@ export const CartProductCard: React.FC<Props> = ({ index, products, handleDelete
     const handleDeletePress = () => {
         handleDelete(index);
     };
+    
     const handleMinus = () => {
         if (amount > 1) {
             handleAmountChange(index, -1);
         }
     };
+
     const handlePlus = () => {
         handleAmountChange(index, 1)
     };
+
     const handleShowTotalPrice = () => {
         const auxPrice = price.replace(",", ".");
         const totalPrice = (parseFloat(auxPrice) * amount).toFixed(2);

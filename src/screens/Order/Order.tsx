@@ -9,12 +9,14 @@ import AsyncStorage, {
 import { styles } from "./styles";
 import { api } from "../../service";
 import { NavigationProps, ScreenType } from "../../navigation/types";
-import { CartProductI } from "../../components/Cart/CartProductList";
-
-import { AddressCard } from "../../components/AddressCard";
-import { Button } from "../../components/Button";
-import { PaymentMethod } from "../../components/PaymentMethod";
 import { User, useUser } from "../../context/user";
+
+import { CartProductI } from "../../components/Cart/CartProductList";
+import { Typography } from "../../components/Typography";
+import { Button } from "../../components/Button";
+import { AddressCard } from "../../components/AddressCard";
+import { PaymentMethod } from "../../components/PaymentMethod";
+import { CartOrderTotalPrice } from "../../components/CartOrderTotalPrice";
 
 export interface OrderI {
   userId: string;
@@ -51,6 +53,7 @@ export const Order: React.FC<Props> = () => {
     userId: user.id,
     address: { id: user.defaultAddress },
   });
+  const [cart, setCart] = useState<CartProductI[]>([]);
   const navigation = useNavigation<NavigationProps>();
   const { getItem } = useAsyncStorage("@cart");
 
@@ -58,6 +61,12 @@ export const Order: React.FC<Props> = () => {
     setOrder((prev) => {
       return { ...prev, paymentMethod };
     });
+  };
+
+  const getCartProducts = async () => {
+    const cart = await getItem();
+    const cartParsed: CartProductI[] = cart ? JSON.parse(cart) : [];
+    return cartParsed;
   };
 
   const cleanCart = () => {
@@ -75,9 +84,7 @@ export const Order: React.FC<Props> = () => {
   };
 
   const createOrderProduct = async (orderData: OrderResponse) => {
-    const cart = await getItem();
-    const cartParsed: CartProductI[] = cart ? JSON.parse(cart) : [];
-    const orderProductData: OrderProductI[] = cartParsed.map(
+    const orderProductData: OrderProductI[] = cart.map(
       (cardProduct: CartProductI) => {
         return {
           product: { id: cardProduct.product.id },
@@ -115,10 +122,16 @@ export const Order: React.FC<Props> = () => {
       });
     }
   };
+
+  React.useEffect(() => {
+    getCartProducts().then((cart) => setCart(cart));
+  }, []);
+
   return (
     <>
       <View style={styles.container}>
         <AddressCard />
+        <CartOrderTotalPrice products={cart} />
         <PaymentMethod
           order={order}
           changePaymentMethod={changePaymentMethod}
