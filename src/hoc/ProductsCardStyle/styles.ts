@@ -4,7 +4,8 @@ export const styles = {
   default: {
     productCardContainer: {
       width: 220,
-      height: 320,
+      minHeight: 320,
+      maxHeight: 320,
       alignItems: "center",
       justifyContent: "center",
       backgroundColor: colorPalette.white,
@@ -62,6 +63,7 @@ export const styles = {
     productTitle: {
       textAlign: "center",
       marginTop: 10,
+      fontWeight: "bold",
     },
     productDescription: {
       display: "none",
