@@ -8,6 +8,7 @@ import { styles } from "./styles";
 import { Typography } from "../../components/Typography";
 import { Button } from "../../components/Button";
 import Toast from "react-native-toast-message";
+import { ScrollView } from "react-native-gesture-handler";
 
 type Props = ScreenType<"Product">;
 type Routes = {
@@ -49,21 +50,23 @@ export const Product: React.FC<Props> = ({ route, navigation }) => {
   return (
     <View style={styles.container}>
       <ImageSlider images={product.images} />
-      <View style={styles.productDetailsContainer}>
-        <Typography type="title" style={styles.title}>
-          {product.title}
-        </Typography>
-        <Typography type="largeParagraph">Descrição</Typography>
-        <Typography style={styles.description} type="paragraph">
-          {product.description}
-        </Typography>
-        <View style={styles.priceContainer}>
-          <Typography type="largeParagraph">Total:</Typography>
-          <Typography type="largeParagraph" style={styles.priceText}>
-            R$ {product.price}
+      <ScrollView>
+        <View style={styles.productDetailsContainer}>
+          <Typography type="title" style={styles.title}>
+            {product.title}
           </Typography>
+          <Typography type="largeParagraph">Descrição</Typography>
+          <Typography style={styles.description} type="paragraph">
+            {product.description}
+          </Typography>
+          <View style={styles.priceContainer}>
+            <Typography type="largeParagraph">Total:</Typography>
+            <Typography type="largeParagraph" style={styles.priceText}>
+              R$ {product.price}
+            </Typography>
+          </View>
         </View>
-      </View>
+      </ScrollView>
       <View style={styles.button}>
         <Button
           onPress={() => {
