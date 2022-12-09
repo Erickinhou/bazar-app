@@ -63,7 +63,7 @@ export const styles = {
     productTitle: {
       textAlign: "center",
       marginTop: 10,
-      fontWeight: "bold",
+      fontSize: 12,
     },
     productDescription: {
       display: "none",
@@ -73,9 +73,6 @@ export const styles = {
       color: colorPalette.primary,
       marginTop: 10,
     },
-    typeTitle: "paragraph",
-    typeDescription: "paragraph",
-    typePrice: "paragraph",
   },
   
 };
