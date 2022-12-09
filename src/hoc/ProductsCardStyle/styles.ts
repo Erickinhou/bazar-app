@@ -63,7 +63,7 @@ export const styles = {
     productTitle: {
       textAlign: "center",
       marginTop: 10,
-      fontSize: 12,
+      fontSize: 14,
     },
     productDescription: {
       display: "none",
