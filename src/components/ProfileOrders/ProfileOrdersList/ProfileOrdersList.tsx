@@ -15,6 +15,7 @@ export const ProfileOrdersList: React.FC<Props> = ({ orders }) => {
                 data={orders}
                 keyExtractor={(item) => item.id}
                 renderItem={({ item, index }) => <ProfileOrdersCard order={item} index={index} />}
+                showsVerticalScrollIndicator={false}
             />
         </View>
     );

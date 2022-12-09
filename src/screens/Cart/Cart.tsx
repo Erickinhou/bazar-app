@@ -10,6 +10,7 @@ import { CartProductList } from '../../components/Cart/CartProductList';
 import { Button } from '../../components/Button';
 import { Typography } from '../../components/Typography';
 import { NoProductFound } from '../../components/NoProductFound';
+import { CartOrderTotalPrice } from '../../components/CartOrderTotalPrice';
 
 import headphone from "../../../assets/images/headphone.png";
 
@@ -25,10 +26,6 @@ export const Cart = () => {
         const cartParsed = cart ? JSON.parse(cart) : [];
         setProducts(cartParsed)
     }
-
-    useEffect(() => {
-        getProducts()
-    }, [isFocused])
 
     const handleDelete = async (listIndex: number) => {
         const cart = await getItem();
@@ -50,6 +47,10 @@ export const Cart = () => {
         navigation.navigate("Order");
     }
 
+    useEffect(() => {
+        getProducts()
+    }, [isFocused])
+
     return (
         <View style={styles.container}>
             <Typography type="subtitle" style={styles.title}> Carrinho </Typography>
@@ -69,7 +70,14 @@ export const Cart = () => {
                     />
                 )}
             </View>
-            {products.length > 0 && <Button text="Realizar pedido" onPress={() => handleProceedToOrder()} />}
+            {products.length > 0 && (
+                <View>
+                    <CartOrderTotalPrice products={products} style={{textAlign: "center"}}>
+                        Total: {" "}
+                    </CartOrderTotalPrice>
+                    <Button text="Realizar pedido" onPress={() => handleProceedToOrder()} />
+                </View>
+            )}
         </View>
     )
 }   

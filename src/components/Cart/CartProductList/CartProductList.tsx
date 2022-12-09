@@ -29,6 +29,7 @@ export const CartProductList: React.FC<Props> = ({ products, handleDelete, handl
                         handleAmountChange={handleAmountChange}
                     />
                 }
+                showsVerticalScrollIndicator={false}
             />
         </View>
     );

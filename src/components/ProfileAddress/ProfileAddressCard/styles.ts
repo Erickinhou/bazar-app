@@ -12,7 +12,6 @@ export const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 10,
     marginVertical: 5,
-    marginHorizontal: 20,
   },
   isActive: {
     borderWidth: 1,
@@ -32,5 +31,9 @@ export const styles = StyleSheet.create({
   addressTitle: {
     fontWeight: "bold",
     fontStyle: "italic",
+  },
+  addressText: {
+    flex: 1,
+    flexWrap: "wrap",
   },
 });
