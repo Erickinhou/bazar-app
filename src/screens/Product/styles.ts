@@ -23,8 +23,7 @@ export const styles = StyleSheet.create({
   button: {
     width: "100%",
     padding: 10,
-    position: "absolute",
-    bottom: 10,
+    marginVertical: 5,
   },
   description: {
     paddingVertical: 10,
