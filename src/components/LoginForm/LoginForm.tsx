@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Text, View } from "react-native";
+import { Linking, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Toast from "react-native-toast-message";
 import { Label } from "../Label";
@@ -22,6 +22,9 @@ interface FormI {
   email: string;
 }
 
+const URL_DONATION =
+  "https://doar.gerandofalcoes.com/globoplay/?utm_source=google&utm_medium=search&utm_campaign=institucional-globoplay&utm_content=608731965036&utm_term=gerando%20falc%C3%B5es%20doa%C3%A7%C3%B5es&gclid=CjwKCAiAheacBhB8EiwAItVO22x1cnTxkUglJrNTFxxZaXt_r9Va0eLwIEdoIZuXPslOvYoCBNXzABoCdFMQAvD_BwE";
+
 export const LoginForm: React.FC = () => {
   const [form, setForm] = useState<FormI>({ password: "", email: "" });
   const [disabled, setDisabled] = useState(false);
@@ -31,6 +34,19 @@ export const LoginForm: React.FC = () => {
 
   const navigateToRegister = () => {
     navigation.navigate("Register");
+  };
+
+  const navigateToDonation = async () => {
+    try {
+      await Linking.canOpenURL(URL_DONATION);
+      await Linking.openURL(URL_DONATION);
+    } catch {
+      Toast.show({
+        type: "error",
+        text1: "Falhou",
+        text2: "Não foi possivel achar esse site",
+      });
+    }
   };
 
   const navigateToDashboard = () => {
@@ -89,7 +105,9 @@ export const LoginForm: React.FC = () => {
           setDisabled={setDisabled}
         />
       </View>
-      <TextLink theme="primary">Esqueceu a Senha?</TextLink>
+      <TextLink onPress={navigateToDonation} theme="primary">
+        Doe Aqui!
+      </TextLink>
       <View style={styles.buttonContainer}>
         <Button
           type="primary"

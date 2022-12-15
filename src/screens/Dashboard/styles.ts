@@ -8,7 +8,6 @@ export const styles = StyleSheet.create({
     padding: 20,
   },
   title: {
-    marginTop: 40,
     marginBottom: 20,
   },
 });

@@ -33,16 +33,22 @@ const ProductCardComponent: React.FC<Props> = ({ product, style }) => {
           }}
           style={style.thumbnail}
         />
-        <Typography type="largeParagraph" style={style.productTitle}>
+        <Typography
+          type="largeParagraph"
+          style={style.productTitle}
+          numberOfLines={1}
+        >
           {product.title}
         </Typography>
-        <ScrollView showsVerticalScrollIndicator={false}>
-          <View onStartShouldSetResponder={() => true}>
-            <Typography type="paragraph" style={style.productDescription}>
-              {product.description}
-            </Typography>
-          </View>
-        </ScrollView>
+
+        <Typography
+          type="paragraph"
+          style={style.productDescription}
+          numberOfLines={3}
+        >
+          {product.description}
+        </Typography>
+
         <Typography type="paragraph" style={style.productPrice}>
           R$ {product.price}
         </Typography>

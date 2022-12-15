@@ -4,8 +4,8 @@ export const styles = {
   default: {
     productCardContainer: {
       width: 220,
-      minHeight: 320,
-      maxHeight: 320,
+      minHeight: 260,
+      maxHeight: 260,
       alignItems: "center",
       justifyContent: "center",
       backgroundColor: colorPalette.white,
@@ -74,5 +74,4 @@ export const styles = {
       marginTop: 10,
     },
   },
-  
 };

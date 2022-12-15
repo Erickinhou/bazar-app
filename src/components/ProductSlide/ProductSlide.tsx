@@ -61,9 +61,8 @@ export const ProductSlide = () => {
   };
 
   const handleClickVerMais = () => {
-    navigation.navigate("Search")
-  }
-
+    navigation.navigate("Search");
+  };
 
   useEffect(() => {
     updateProductById();
@@ -84,7 +83,11 @@ export const ProductSlide = () => {
           })}
         </ScrollView>
       </View>
-      <TextLink theme="primary" textAlign="right" onPress={() => handleClickVerMais()}>
+      <TextLink
+        theme="primary"
+        textAlign="right"
+        onPress={() => handleClickVerMais()}
+      >
         Ver mais <Image source={arrowRightPurpleIcon} />
       </TextLink>
     </>
