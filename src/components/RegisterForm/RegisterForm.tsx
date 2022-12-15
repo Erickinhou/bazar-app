@@ -55,7 +55,7 @@ export const RegisterForm: React.FC = () => {
       setForm(formattedForm);
 
       //Todo: create a way to store this data to check if logged or not
-      const { data: user } = await api.post("/signUp", formattedForm);
+      const { data: user } = await api.post("/user", formattedForm);
 
       setUser(user);
       navigation.navigate("DashboardTabs");
@@ -84,6 +84,7 @@ export const RegisterForm: React.FC = () => {
     <ScrollView
       automaticallyAdjustKeyboardInsets={true}
       style={styles.container}
+      showsVerticalScrollIndicator={false}
     >
       <Typography type="subtitle" style={styles.title}>
         Crie uma nova conta

@@ -3,7 +3,9 @@ import { colorPalette } from "../../theme/colors";
 export const styles = {
   default: {
     productCardContainer: {
-      width: 200,
+      width: 220,
+      minHeight: 320,
+      maxHeight: 320,
       alignItems: "center",
       justifyContent: "center",
       backgroundColor: colorPalette.white,
@@ -14,8 +16,8 @@ export const styles = {
       shadowColor: colorPalette.dark,
     },
     thumbnail: {
-      height: 150,
-      width: 150,
+      height: 120,
+      width: 120,
       borderRadius: 90,
       resizeMode: "center",
     },
@@ -33,7 +35,11 @@ export const styles = {
       color: colorPalette.primary,
       marginTop: 10,
     },
+    typeTitle: "largeParagraph",
+    typeDescription: "paragraph",
+    typePrice: "paragraph",
   },
+
   search: {
     productCardContainer: {
       width: 150,
@@ -57,6 +63,7 @@ export const styles = {
     productTitle: {
       textAlign: "center",
       marginTop: 10,
+      fontSize: 14,
     },
     productDescription: {
       display: "none",
@@ -67,4 +74,5 @@ export const styles = {
       marginTop: 10,
     },
   },
+  
 };

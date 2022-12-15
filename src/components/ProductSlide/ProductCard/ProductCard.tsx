@@ -4,6 +4,7 @@ import { ProductI } from "../ProductSlide";
 import { ProductCardHOC } from "../../../hoc/ProductsCardStyle";
 import { useNavigation } from "@react-navigation/native";
 import { NavigationProps } from "../../../navigation/types";
+import { ScrollView } from "react-native-gesture-handler";
 
 interface Props {
   product: ProductI;
@@ -35,9 +36,13 @@ const ProductCardComponent: React.FC<Props> = ({ product, style }) => {
         <Typography type="largeParagraph" style={style.productTitle}>
           {product.title}
         </Typography>
-        <Typography type="paragraph" style={style.productDescription}>
-          {product.description}
-        </Typography>
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <View onStartShouldSetResponder={() => true}>
+            <Typography type="paragraph" style={style.productDescription}>
+              {product.description}
+            </Typography>
+          </View>
+        </ScrollView>
         <Typography type="paragraph" style={style.productPrice}>
           R$ {product.price}
         </Typography>

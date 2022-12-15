@@ -18,7 +18,9 @@ export const DrawerContent: React.FC<Props> = () => {
   const navigation = useNavigation<NavigationProps>();
 
   return (
-    <DrawerContentScrollView>
+    <DrawerContentScrollView
+      showsVerticalScrollIndicator={false}
+    >
       <View style={styles.container}>
         <View>
           <Image source={iconGerandoFalcoes} style={styles.iconGF} />

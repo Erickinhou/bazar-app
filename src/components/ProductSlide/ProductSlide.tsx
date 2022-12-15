@@ -8,6 +8,8 @@ import { CategoryOptions } from "./CategoryOptions";
 import { ProductCard } from "./ProductCard";
 import arrowRightPurpleIcon from "../../../assets/images/arrowRightPurpleIcon.png";
 import { styles } from "./styles";
+import { useNavigation } from "@react-navigation/native";
+import { NavigationProps } from "../../navigation/types";
 
 export interface CategoryI {
   id: string;
@@ -33,6 +35,7 @@ export const ProductSlide = () => {
   const [categories, setCategories] = useState<CategoryI[]>([]);
   const [products, setProducts] = useState<ProductI[]>([]);
   const [selectedCategoryId, setSelectedCategoryId] = useState<string>();
+  const navigation = useNavigation<NavigationProps>();
 
   const updateProductById = async () => {
     try {
@@ -57,6 +60,11 @@ export const ProductSlide = () => {
     }
   };
 
+  const handleClickVerMais = () => {
+    navigation.navigate("Search")
+  }
+
+
   useEffect(() => {
     updateProductById();
   }, [selectedCategoryId]);
@@ -70,13 +78,13 @@ export const ProductSlide = () => {
         setSelectedCategoryId={setSelectedCategoryId}
       />
       <View style={styles.productSlideContainer}>
-        <ScrollView horizontal={true}>
+        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
           {products.map((product) => {
             return <ProductCard key={product.id} product={product} />;
           })}
         </ScrollView>
       </View>
-      <TextLink theme="primary" textAlign="right">
+      <TextLink theme="primary" textAlign="right" onPress={() => handleClickVerMais()}>
         Ver mais <Image source={arrowRightPurpleIcon} />
       </TextLink>
     </>

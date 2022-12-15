@@ -38,7 +38,7 @@ export const ProfileOrderDetails: React.FC<Props> = ({ route }) => {
         <View style={styles.container}>
             <Typography type="subtitle"> Produtos: </Typography>
             {orderProducts.map((orderProduct) => (
-                <Typography type="paragraph"> {orderProduct.amount}x - {orderProduct.product.title} </Typography>
+                <Typography key={orderProduct.id} type="paragraph"> {orderProduct.amount}x - {orderProduct.product.title} </Typography>
             ))}
         </View>
     );

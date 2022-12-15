@@ -4,10 +4,6 @@
 
 Usa React-Native & typescript, Bazar-App é um E-commerce do bazar da instituição da Gerando Falcões.
 
-![bazar-app](public/images/layout.png?raw=true "Title")
-
-This app está na playstore: XXX
-
 ## 🔌 APIs
 
 - **Link de acesso do backend** -> http://146.190.13.241:3333/
